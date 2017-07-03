@@ -20,14 +20,14 @@
     <form action='/' method='post'>
         <div>
             <label for='username'></label>
-            <input type='text' ng-model='username' placeholder='username' id='username'>
+            <input type='text' ng-model='pc.username' placeholder='username' id='username'>
         </div>
         <div>
             <label for='password'></label>
-            <input type='password' ng-model='password' placeholder='password' id='password'>
+            <input type='password' ng-model='pc.password' placeholder='password' id='password'>
         </div>
         <div>
-            <input type='submit' value='Log In'>
+            <button type="button" ng-click='pc.loginUser()'>Log In</button>
             <a href='/register'>Register</a>
         </div>
     </form>

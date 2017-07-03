@@ -28,8 +28,8 @@ router.post( '/', function( req, res ) {
     } // end error
     else {
       if ( user != undefined ) {
-        console.log('comparing:', req.body.password, mongo.password);
-        bcrypt.compare(req.body.password, mongo.password, function( err, isMatch ){
+        console.log('comparing:', req.body.password, user.password);
+        bcrypt.compare(req.body.password, user.password, function( err, isMatch ){
           if ( err ) {
             console.log('compare err:', err);
             res.sendStatus(400);

@@ -2,10 +2,15 @@ app.service ('PlantService', function($http){
   var sv = this;
 
   sv.registerUser = function( credentials ) {
-    console.log('in service: registerUser()');
-
-    return $http.post('/register', credentials ).then ( function(response){
+    return $http.post('/register', credentials ).then( function(response){
       console.log('back from register attempt:', response);
     }); // end $http
   }; // end registerUser
+
+  sv.loginUser = function( credentials ) {
+    return $http.post('/', credentials ).then( function(response) {
+      console.log('back from login attempt:', response);
+    }); // end $http
+  }; // end loginUser
+
 }); // end service

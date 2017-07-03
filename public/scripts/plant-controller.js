@@ -20,4 +20,18 @@ function PlantController( PlantService ){
     }); // end PlantService
   }; // end register
 
+  vm.loginUser = function() {
+    console.log('in controller: loginUser()');
+
+    let credentials = {
+      username: vm.username,
+      password: vm.password
+    };
+
+    PlantService.loginUser( credentials ).then( function() {
+      console.log('logged in');
+    }); // end PlantService
+
+  }; // end loginUser
+
 } // end PlantController
