@@ -1,4 +1,4 @@
-var plantData = 
+const PLANT_DATA = 
 [
   {
     "mn-native": "TRUE",
