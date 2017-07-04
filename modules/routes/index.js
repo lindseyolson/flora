@@ -24,15 +24,15 @@ router.post( '/', function( req, res ) {
   }, function ( err, user ) {
     if ( err ) {
       console.log('find user error:', err );
-      res.sendStatus(400);
+      res.sendStatus( 400 );
     } // end error
     else {
       if ( user != undefined ) {
         console.log('comparing:', req.body.password, user.password);
-        bcrypt.compare(req.body.password, user.password, function( err, isMatch ){
+        bcrypt.compare( req.body.password, user.password, function( err, isMatch ) {
           if ( err ) {
             console.log('compare err:', err);
-            res.sendStatus(400);
+            res.sendStatus( 400 );
           } // end error
           else {
             console.log('found user');
@@ -47,7 +47,7 @@ router.post( '/', function( req, res ) {
       }
       else {
         console.log('no user found');
-        res.sendStatus(400);
+        res.send('no user found');
         }
       } // end no error
     }

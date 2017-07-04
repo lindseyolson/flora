@@ -2,7 +2,7 @@ var app = angular.module ( 'app', [] );
 
 app.controller( 'PlantController', PlantController );
 
-function PlantController( PlantService ){
+function PlantController( PlantService, $window ){
   var vm = this;
   console.log('NG');
 
@@ -29,12 +29,14 @@ function PlantController( PlantService ){
     };
 
     PlantService.loginUser( credentials ).then( function( response ) {
-      console.log('logged in, from controller:', response);
+      console.log('from controller:', response);
       if( response.data === 'match found') {
         vm.loggedIn = true;
       } // end match found
       else {
         vm.loggedIn = false;
+        console.log(vm.loggedIn);
+        $window.location.href = '/views/failure.html';
       } // end error
     }); // end PlantService
   }; // end loginUser
