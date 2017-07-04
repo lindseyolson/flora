@@ -1,6 +1,4 @@
-app.controller( 'TypeaheadController', TypeaheadController );
-
-function TypeaheadController() {
+app.controller( 'TypeaheadController', function() {
   var vm = this;
   vm.plant = {
     name: 'Jack in the Pulpit'
@@ -18,4 +16,4 @@ app.controller('TypeaheadCtrl', function($scope) {
 
   }; // end addPlant
 
-} // end TypeaheadController
+}); // end TypeaheadController
