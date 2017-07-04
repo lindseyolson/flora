@@ -41,4 +41,11 @@ function PlantController( PlantService, $window ){
     }); // end PlantService
   }; // end loginUser
 
+  vm.logoutUser = function() {
+    console.log('in controller: logoutUser()');
+    vm.loggedIn = false;
+    vm.username = '';
+    vm.password = '';
+  }
+
 } // end PlantController

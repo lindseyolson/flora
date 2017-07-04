@@ -33,7 +33,11 @@
     </form>
 
     <div ng-show='pc.loggedIn'>
-      YOU ARE NOW LOGGED IN
+      <nav>
+        <a href="#">my garden</a>
+        <a href="#">my wish list</a>
+        <button type="button" ng-click='pc.logoutUser()'>Log Out</button>
+      </nav>
     </div>
 
 
