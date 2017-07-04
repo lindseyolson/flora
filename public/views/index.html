@@ -34,10 +34,11 @@
 
     <div ng-show='pc.loggedIn'>
       <nav>
-        <a href="#">my garden</a>
-        <a href="#">my wish list</a>
+        <a href="#!/garden">my garden</a>
+        <a href="#!/wishlist">my wish list</a>
         <button type="button" ng-click='pc.logoutUser()'>Log Out</button>
       </nav>
+      <ng-view></ng-view>
     </div>
 
 

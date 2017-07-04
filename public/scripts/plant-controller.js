@@ -1,4 +1,17 @@
-var app = angular.module ( 'app', [] );
+var app = angular.module ( 'app', ['ngRoute'] );
+
+app.config( function( $routeProvider ) {
+  $routeProvider.when ('/', {
+    templateUrl: 'views/partials/garden.html',
+    controller: 'PlantController as pc'
+  }).when ('/wishlist', {
+    templateUrl: 'views/partials/wishlist.html',
+    controller: 'PlantController as pc'
+  }).when ('/garden', {
+    templateUrl: 'views/partials/garden.html',
+    controller: 'PlantController as pc'
+  });
+}); // end app.config
 
 app.controller( 'PlantController', PlantController );
 
