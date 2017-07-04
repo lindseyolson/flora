@@ -11,11 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-bootstrap": "^0.12.2",
     "angular-route": "^1.6.4",
+    "angular-ui-bootstrap": "^2.5.0",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "express": "^4.15.3",
-    "mongoose": "^4.11.1"
+    "mongoose": "^4.11.1",
+    "ui-bootstrap": "^0.1.10"
   }
 }

@@ -1,4 +1,4 @@
-app.service ('PlantService', function($http){
+app.service ('UserService', function( $http ){
   var sv = this;
 
   sv.registerUser = function( credentials ) {

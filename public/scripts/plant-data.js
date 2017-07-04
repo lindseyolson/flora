@@ -1,8 +1,8 @@
-const PLANT_DATA = 
+const PLANT_DATA =
 [
   {
     "mn-native": "TRUE",
-    "common-name": "American Lotus",
+    "common_name": "American Lotus",
     "life-form": "Ferns and Wildflowers",
     "exposure": "full sun",
     "height": "0.0 - 0.5",
@@ -12,7 +12,7 @@ const PLANT_DATA =
   },
   {
     "mn-native": "TRUE",
-    "common-name": "American White Waterlily",
+    "common_name": "American White Waterlily",
     "life-form": "Ferns and Wildflowers",
     "exposure": "full sun, partial sun",
     "height": "0.0 - 0.5",
@@ -22,7 +22,7 @@ const PLANT_DATA =
   },
   {
     "mn-native": "TRUE",
-    "common-name": "Bunchberry",
+    "common_name": "Bunchberry",
     "life-form": "Ferns and Wildflowers",
     "exposure": "partial sun, full shade",
     "height": "0.0 - 0.5",
@@ -32,7 +32,7 @@ const PLANT_DATA =
   },
   {
     "mn-native": "TRUE",
-    "common-name": "Canada Mayflower",
+    "common_name": "Canada Mayflower",
     "life-form": "Ferns and Wildflowers",
     "exposure": "full shade",
     "height": "0.0 - 0.5",

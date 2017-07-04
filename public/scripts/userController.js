@@ -1,23 +1,5 @@
-var app = angular.module ( 'app', ['ngRoute'] );
-
-app.config( function( $routeProvider ) {
-  $routeProvider.when ('/', {
-    templateUrl: 'views/partials/garden.html',
-    controller: 'PlantController as pc'
-  }).when ('/wishlist', {
-    templateUrl: 'views/partials/wishlist.html',
-    controller: 'PlantController as pc'
-  }).when ('/garden', {
-    templateUrl: 'views/partials/garden.html',
-    controller: 'PlantController as pc'
-  });
-}); // end app.config
-
-app.controller( 'PlantController', PlantController );
-
-function PlantController( PlantService, $window ){
+app.controller( 'UserController', function ( UserService, $window ){
   var vm = this;
-  console.log('NG');
 
   vm.registerUser = function(){
     console.log('in controller: registerUser()');
@@ -27,10 +9,10 @@ function PlantController( PlantService, $window ){
       password: vm.registerPassword
     };
 
-    PlantService.registerUser( credentials ).then(function() {
+    UserService.registerUser( credentials ).then(function() {
       vm.registerUsername = '';
       vm.registerPassword = '';
-    }); // end PlantService
+    }); // end UserService
   }; // end register
 
   vm.loginUser = function() {
@@ -41,7 +23,7 @@ function PlantController( PlantService, $window ){
       password: vm.password
     };
 
-    PlantService.loginUser( credentials ).then( function( response ) {
+    UserService.loginUser( credentials ).then( function( response ) {
       console.log('from controller:', response);
       if( response.data === 'match found') {
         vm.loggedIn = true;
@@ -51,7 +33,7 @@ function PlantController( PlantService, $window ){
         console.log(vm.loggedIn);
         $window.location.href = '/views/failure.html';
       } // end error
-    }); // end PlantService
+    }); // end UserService
   }; // end loginUser
 
   vm.logoutUser = function() {
@@ -59,6 +41,5 @@ function PlantController( PlantService, $window ){
     vm.loggedIn = false;
     vm.username = '';
     vm.password = '';
-  }
-
-} // end PlantController
+  }; // end logoutUser
+}); // end UserController

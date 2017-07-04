@@ -4,7 +4,7 @@ var path = require ('path');
 var bodyParser = require ('body-parser');
 var router = express.Router();
 var bcrypt = require ('bcrypt');
-var user = require ('../user');
+var user = require ('../models/user');
 
 // uses
 router.use ( bodyParser.urlencoded( { extended: true } ) );
