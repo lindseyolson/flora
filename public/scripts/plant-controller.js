@@ -28,10 +28,15 @@ function PlantController( PlantService ){
       password: vm.password
     };
 
-    PlantService.loginUser( credentials ).then( function() {
-      console.log('logged in');
+    PlantService.loginUser( credentials ).then( function( response ) {
+      console.log('logged in, from controller:', response);
+      if( response.data === 'match found') {
+        vm.loggedIn = true;
+      } // end match found
+      else {
+        vm.loggedIn = false;
+      } // end error
     }); // end PlantService
-
   }; // end loginUser
 
 } // end PlantController

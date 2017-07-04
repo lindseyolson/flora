@@ -10,6 +10,7 @@ app.service ('PlantService', function($http){
   sv.loginUser = function( credentials ) {
     return $http.post('/', credentials ).then( function(response) {
       console.log('back from login attempt:', response);
+      return response;
     }); // end $http
   }; // end loginUser
 

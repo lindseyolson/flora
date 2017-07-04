@@ -1,6 +1,8 @@
 // requires
 var express = require ('express');
 var app = express();
+
+// routes
 var index = require ('./modules/routes/index');
 var register = require ('./modules/routes/register');
 

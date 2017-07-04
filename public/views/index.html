@@ -17,7 +17,7 @@
     <h1>myGarden</h1>
     <div ng-controller='PlantController as pc'>
 
-    <form action='/' method='post'>
+    <form ng-hide='pc.loggedIn' action='/' method='post'>
         <div>
             <label for='username'></label>
             <input type='text' ng-model='pc.username' placeholder='username' id='username'>
@@ -31,6 +31,11 @@
             <a href='/register'>Register</a>
         </div>
     </form>
+
+    <div ng-show='pc.loggedIn'>
+      YOU ARE NOW LOGGED IN
+    </div>
+
 
     </div>
   </body>
