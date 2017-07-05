@@ -26,12 +26,9 @@ app.controller( 'UserController', function ( UserService, $window ){
     UserService.loginUser( credentials ).then( function( response ) {
       console.log('from controller:', response);
       if( response.data === 'match found') {
-        vm.loggedIn = true;
         $window.location.href = '/garden#!';
-
       } // end match found
       else {
-        vm.loggedIn = false;
         console.log(vm.loggedIn);
         $window.location.href = '/failure#!';
       } // end error
@@ -40,8 +37,6 @@ app.controller( 'UserController', function ( UserService, $window ){
 
   vm.logoutUser = function() {
     console.log('in controller: logoutUser()');
-    vm.loggedIn = false;
-    vm.username = '';
-    vm.password = '';
+    $window.location.href = '/';
   }; // end logoutUser
 }); // end UserController
