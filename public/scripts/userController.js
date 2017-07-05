@@ -27,11 +27,13 @@ app.controller( 'UserController', function ( UserService, $window ){
       console.log('from controller:', response);
       if( response.data === 'match found') {
         vm.loggedIn = true;
+        $window.location.href = '/garden#!';
+
       } // end match found
       else {
         vm.loggedIn = false;
         console.log(vm.loggedIn);
-        $window.location.href = '/views/failure.html';
+        $window.location.href = '/failure#!';
       } // end error
     }); // end UserService
   }; // end loginUser

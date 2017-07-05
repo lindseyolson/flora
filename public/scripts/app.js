@@ -1,14 +1,17 @@
-var app = angular.module ( 'app', ['ngRoute', 'xeditable', 'ui.bootstrap'] );
+var app = angular.module ( 'app', ['ngRoute'] );
 
 app.config( function( $routeProvider ) {
   $routeProvider.when ('/', {
-    templateUrl: 'views/partials/garden.html',
+    templateUrl: 'views/partials/plants.html',
     controller: 'UserController as uc'
   }).when ('/wishlist', {
     templateUrl: 'views/partials/wishlist.html',
     controller: 'UserController as uc'
-  }).when ('/garden', {
-    templateUrl: 'views/partials/garden.html',
+  }).when ('/plants', {
+    templateUrl: 'views/partials/plants.html',
     controller: 'UserController as uc'
+  }).when ('/plant-specs', {
+    templateUrl: 'views/partials/plant-specs.html',
+    conotroller: 'TypeaheadController as tc'
   });
 }); // end app.config
