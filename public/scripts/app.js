@@ -1,4 +1,8 @@
-var app = angular.module ( 'app', ['ngRoute', 'angucomplete-alt', 'ui.select', 'ngSanitize'] );
+var app = angular.module ( 'app', ['ngRoute', 'angucomplete-alt', 'xeditable'] );
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
 
 app.config( function( $routeProvider ) {
   $routeProvider.when ('/', {

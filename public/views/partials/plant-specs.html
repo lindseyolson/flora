@@ -12,23 +12,33 @@
     minlength="1"></angucomplete-alt>
 </div>
 
+<!-- <div id='EditableFormCtrl'>
+  <a href="#" editable-text="tc.user.name">{{ tc.user.name || "empty" }}</a>
+</div> -->
 
-<div id="EditableFormCtrl">
-  <form editable-form name="editableForm" >
+
+<div id='EditableFormCtrl'>
+  <a href="#" editable-select="tc.user.status" e-ng-options="s.value as s.text for s in tc.statuses">
+    {{ tc.showStatus() }}
+  </a>
+</div>
+
+<!-- <div id="EditableFormCtrl">
+  <form editable-form name="editableForm" > -->
     <!-- onaftersave="savePlant()" -->
-    <div>
+    <!-- <div> -->
       <!-- Common Name -->
-      <span class="title">Common Name: </span>
+      <!-- <span class="title">Common Name: </span>
       <span e-name="common_name" onbeforesave="tc.checkName($data)">{{ tc.user.name }} </span>
     </div>
 
-  <div>
+  <div> -->
       <!-- Life Form -->
-      <span class="title">Life Form: </span>
+      <!-- <span class="title">Life Form: </span>
       <span editable-select="tc.user.lifeForm" e-name="lifeForm" e-ng-options="l.value as l.text for l in tc.lifeForm">
-        {{ tc.lifeForm || 'Not set' }}
+        {{ tc.lifeForm }}
       </span>
-    </div>
+    </div> -->
 
     <!-- <div> -->
       <!-- Exposure -->
@@ -70,13 +80,13 @@
       </span>
     </div> -->
 
-    <div class="buttons">
+    <!-- <div class="buttons"> -->
       <!-- button to show form -->
-      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+      <!-- <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
         Edit
-      </button>
+      </button> -->
       <!-- buttons to submit / cancel form -->
-      <span ng-show="editableForm.$visible">
+      <!-- <span ng-show="editableForm.$visible">
         <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
           Save
         </button>
@@ -86,4 +96,4 @@
       </span>
     </div>
   </form>
-</div>
+</div> -->

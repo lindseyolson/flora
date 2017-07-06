@@ -1,4 +1,8 @@
 /*typeahead dropdown*/
+.input {
+  padding-top: 8em;
+}
+
 #EditableFormCtrl {
    padding-top: 8em;
 }
