@@ -16,6 +16,6 @@ app.config( function( $routeProvider ) {
     controller: 'UserController as uc'
   }).when ('/plant-specs', {
     templateUrl: 'views/partials/plant-specs.html',
-    controller: 'TypeaheadController as tc'
+    controller: 'PlantController as pc'
   });
 }); // end app.config

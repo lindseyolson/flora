@@ -1,11 +1,42 @@
+/*editable form*/
+#EditableFormCtrl {
+   padding-top: 8em;
+}
+
+.input {
+  width: 250px;
+}
+
+div[ng-app] { margin: 10px; }
+form[name="editableForm"] > div {
+  height: auto;
+  padding: 5px 0;
+}
+
+form[name="editableForm"] .title {
+  display: inline-block;
+  font-weight: bold;
+  padding-top: 5px;
+  vertical-align: top;
+  min-width: 90px;
+}
+
+form[name="editableForm"] .editable {
+  display: inline-block;
+  padding-top: 5px;
+  vertical-align: top;
+  width: 250px;
+}
+
+form[name="editableForm"] select {
+  width: 250px;
+}
+
 /*typeahead dropdown*/
 .input {
   padding-top: 8em;
 }
 
-#EditableFormCtrl {
-   padding-top: 8em;
-}
 .angucomplete-dropdown {
     border-color: #ececec;
     border-width: 1px;

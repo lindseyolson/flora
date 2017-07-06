@@ -11,7 +11,7 @@ router.use ( bodyParser.json() );
 
 // GET //
 router.get('/', function(req,res){
-  console.log('register url hit');
+  console.log('garden url hit');
   res.sendFile(path.resolve('public/views/garden.html'));
 }); // end get
 

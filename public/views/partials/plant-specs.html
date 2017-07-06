@@ -5,88 +5,74 @@
     placeholder="Search plants"
     pause="100"
     selected-object="selectedPlant"
-    local-data="tc.plants"
+    local-data="pc.plantData"
     search-fields="common_name"
     title-field="common_name"
     input-class="form-control form-control-small"
     minlength="1"></angucomplete-alt>
 </div>
 
-<!-- <div id='EditableFormCtrl'>
-  <a href="#" editable-text="tc.user.name">{{ tc.user.name || "empty" }}</a>
-</div> -->
 
-
-<div id='EditableFormCtrl'>
-  <a href="#" editable-select="tc.user.status" e-ng-options="s.value as s.text for s in tc.statuses">
-    {{ tc.showStatus() }}
-  </a>
-</div>
-
-<!-- <div id="EditableFormCtrl">
-  <form editable-form name="editableForm" > -->
-    <!-- onaftersave="savePlant()" -->
-    <!-- <div> -->
+<div id="EditableFormCtrl">
+  <form editable-form name="editableForm"  onaftersave="pc.savePlantSpecs()">
+    <div>
       <!-- Common Name -->
-      <!-- <span class="title">Common Name: </span>
-      <span e-name="common_name" onbeforesave="tc.checkName($data)">{{ tc.user.name }} </span>
+      <span class="title">Common Name: </span>
+     <span e-placeholder='common name' class='input' editable-text="pc.plant.common_name" e-name="common_name" e-required>
+       {{ 'empty' }}</span>
     </div>
 
-  <div> -->
+    <div>
       <!-- Life Form -->
-      <!-- <span class="title">Life Form: </span>
-      <span editable-select="tc.user.lifeForm" e-name="lifeForm" e-ng-options="l.value as l.text for l in tc.lifeForm">
-        {{ tc.lifeForm }}
+      <span class="title">Life Form: </span>
+      <span editable-select="pc.plant.life_form" e-name="life_form" e-ng-options="l.id as l.text for l in pc.life_form">
+        {{ (pc.life_form | filter:{value: plant.life_form})[0].text  || 'not set'}}
       </span>
-    </div> -->
+    </div>
 
-    <!-- <div> -->
+    <div>
       <!-- Exposure -->
-      <!-- <span class="title">Exposure: </span>
-      <span editable-select="user.group" e-name="group" e-ng-options="g.id as g.text for g in groups">
-
+      <span class="title">Exposure: </span>
+      <span editable-select="pc.plant.exposure" e-name="exposure" e-ng-options="e.id as e.text for e in pc.exposure">
+        {{ (pc.exposure | filter:{value: plant.exposure})[0].text  || 'not set'}}
       </span>
     </div>
 
-    <div> -->
+    <div>
       <!-- Height -->
-      <!-- <span class="title">Height: </span>
-      <span editable-select="user.group" e-name="group" e-ng-options="g.id as g.text for g in groups">
-
-      </span>
+      <span class="title">Height: </span>
+      <span e-placeholder='height' class='input' editable-text="pc.plant.height" e-name="height">
+       {{ pc.plant.height || 'empty' }}</span>
     </div>
 
-    <div> -->
+    <div>
       <!-- Width -->
-      <!-- <span class="title">Width: </span>
-      <span editable-select="user.group" e-name="group" e-ng-options="g.id as g.text for g in groups">
-        {{ showGroup() }}
-      </span>
+      <span class="title">Width: </span>
+      <span e-placeholder='width' class='input' editable-text="pc.plant.width" e-name="width">
+       {{ pc.plant.width || 'empty' }}</span>
     </div>
 
-    <div> -->
+    <div>
       <!-- Flower Color -->
-      <!-- <span class="title">Flower Color: </span>
-      <span editable-select="user.group" e-name="group" e-ng-options="g.id as g.text for g in groups">
-        {{ showGroup() }}
-      </span>
+      <span class="title">Flower Color: </span>
+      <span e-placeholder='flower color' class='input' editable-text="pc.plant.flower_color" e-name="flower_color">
+       {{ pc.plant.flower_color || 'empty' }}</span>
     </div>
 
-    <div> -->
+    <div>
       <!-- Bloom Time -->
-      <!-- <span class="title">Bloom Time: </span>
-      <span editable-select="user.group" e-name="group" e-ng-options="g.id as g.text for g in groups">
-        {{ showGroup() }}
-      </span>
-    </div> -->
+      <span class="title">Bloom Time: </span>
+      <span e-placeholder='bloom time' class='input' editable-text="pc.plant.bloom_time" e-name="bloom_time">
+       {{ pc.plant.bloom_time || 'empty' }}</span>
+    </div>
 
-    <!-- <div class="buttons"> -->
+    <div class="buttons">
       <!-- button to show form -->
-      <!-- <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
         Edit
-      </button> -->
+      </button>
       <!-- buttons to submit / cancel form -->
-      <!-- <span ng-show="editableForm.$visible">
+      <span ng-show="editableForm.$visible">
         <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
           Save
         </button>
@@ -96,4 +82,5 @@
       </span>
     </div>
   </form>
-</div> -->
+</div>
+<button type="button" ng-click='pc.savePlantSpecs()'></button>
