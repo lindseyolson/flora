@@ -1,4 +1,4 @@
-var app = angular.module ( 'app', ['ngRoute'] );
+var app = angular.module ( 'app', ['ngRoute', 'angucomplete-alt', 'ui.select', 'ngSanitize'] );
 
 app.config( function( $routeProvider ) {
   $routeProvider.when ('/', {
@@ -12,6 +12,6 @@ app.config( function( $routeProvider ) {
     controller: 'UserController as uc'
   }).when ('/plant-specs', {
     templateUrl: 'views/partials/plant-specs.html',
-    conotroller: 'TypeaheadController as tc'
+    controller: 'TypeaheadController as tc'
   });
 }); // end app.config

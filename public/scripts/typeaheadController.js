@@ -1,29 +1,53 @@
-// app.controller('TypeaheadController', ['$scope', '$http', '$rootScope',
-//   function MainController($scope, $http, $rootScope) {
-//     $scope.remoteUrlRequestFn = function(str) {
-//       return {q: str};
-//     };
-//
-//     $scope.plants =
-//     [
-//       {'name':'daisy'},
-//       {'name':'rose1'},
-//       {'name':'rose2'},
-//       {'name':'rose3'},
-//       {'name':'rose4'},
-//       {'name':'rose5'},
-//
-//     ];
-//   }]);
-
-
-app.controller( 'TypeaheadController', function() {
+app.controller( 'TypeaheadController', function( $filter, $http ) {
   var vm = this;
-  
-  vm.doThis = function() {
-    console.log('Are you working?');
-  }
+  vm.plants = plantData;
 
+  vm.user = {
+    name: 'rose',
+    lifeForm: 1
+  };
 
+  vm.lifeForm = [
+    {id: 1, text: 'Ferns and Wildflowers'},
+    {id: 2, text: 'Grasses, Sedges and Rushes'},
+    {id: 3, text: 'Trees and Shrubs'},
+    {id: 4, text: 'Vines'}
+  ];
+
+  vm.exposure = [
+    {id: 1, text: 'full sun'},
+    {id: 2, text: 'part sun'},
+    {id: 3, text: 'full shade'}
+  ];
+
+  vm.height = [
+    {id: 1, text: '1'},
+    {id: 2, text: '2'},
+    {id: 3, text: '3'}
+  ];
+
+  vm.width = [
+    {id: 1, text: '1'},
+    {id: 2, text: '2'},
+    {id: 3, text: '3'}
+  ];
+
+  vm.flowerColor = [
+    {id: 1, text: 'red'},
+    {id: 2, text: 'yellow'},
+    {id: 3, text: 'purple'}
+  ];
+
+  vm.bloomTime = [
+    {id: 1, text: 'early spring'},
+    {id: 2, text: 'late spring'},
+    {id: 3, text: 'early summer'}
+  ];
+
+  vm.checkName = function(data) {
+    if (data !== '') {
+      return "You must submit a name!";
+    }
+  };
 
 }); // end TypeaheadController
