@@ -7,13 +7,13 @@ app.run(function(editableOptions) {
 app.config( function( $routeProvider ) {
   $routeProvider.when ('/', {
     templateUrl: 'views/partials/plants.html',
-    controller: 'UserController as uc'
+    controller: 'PlantController as pc'
   }).when ('/wishlist', {
     templateUrl: 'views/partials/wishlist.html',
-    controller: 'UserController as uc'
+    controller: 'PlantController as pc'
   }).when ('/plants', {
     templateUrl: 'views/partials/plants.html',
-    controller: 'UserController as uc'
+    controller: 'PlantController as pc'
   }).when ('/plant-specs', {
     templateUrl: 'views/partials/plant-specs.html',
     controller: 'PlantController as pc'

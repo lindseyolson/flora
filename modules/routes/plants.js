@@ -19,16 +19,28 @@ var plantSchema = new mongoose.Schema({
   width: String,
   flower_color: String,
   bloom_time: String,
-  mn_native: Boolean,
+  mn_native: String,
   notes: String
 }); // end schema
 
 // plant model
-var plantModel = mongoose.model('plants', plantSchema);
+var plantModel = mongoose.model('plantModel', plantSchema);
+
+// GET //
+router.get('/', function( req, res ){
+  console.log('/plants GET hit');
+  plantModel.find().then( function( data ){
+    console.log( data );
+    res.send( data );
+  }); // end find()
+}); // end get
 
 // POST //
-router.post('/', function(req,res){
+router.post('/', function( req,res ){
   console.log('/plants POST hit:', req.body);
-}); // end get
+  var newRecord = plantModel(req.body);
+  newRecord.save();
+  res.sendStatus(201);
+}); // end post
 
 module.exports = router;

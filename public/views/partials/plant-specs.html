@@ -14,9 +14,8 @@
 
 
 <div id="EditableFormCtrl">
-  <form editable-form name="editableForm" >
+  <form editable-form name="editableForm" onaftersave="pc.savePlantSpecs()">
     <div>
-       <!-- onaftersave="pc.savePlantSpecs()" -->
       <!-- Common Name -->
       <span class="title">Common Name: </span>
      <span e-placeholder='common name' class='input' editable-text="pc.plant.common_name" e-name="common_name" e-required>
@@ -75,27 +74,27 @@
       </span>
     </div>
 
+    <div>
     <!-- Notes -->
     <span class="title">Notes: </span>
     <span e-placeholder='Notes' class='input' editable-text="pc.plant.notes" e-name="notes">
      {{ pc.plant.mn_notes || 'empty' }}</span>
   </div>
 
-    <div class="buttons">
-      <!-- button to show form -->
-      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
-        Edit
+  <div>
+    <!-- button to show form -->
+    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+      Edit
+    </button>
+    <!-- buttons to submit / cancel form -->
+    <span ng-show="editableForm.$visible">
+      <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+        Save
       </button>
-      <!-- buttons to submit / cancel form -->
-      <span ng-show="editableForm.$visible">
-        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
-          Save
-        </button>
-        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
-          Cancel
-        </button>
-      </span>
-    </div>
-  </form>
+      <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+        Cancel
+      </button>
+    </span>
+  </div>
+</form>
 </div>
-<button type="button" ng-click='pc.savePlantSpecs()'>button</button>

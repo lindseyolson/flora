@@ -26,11 +26,11 @@ app.controller( 'UserController', function ( UserService, $window ){
     UserService.loginUser( credentials ).then( function( response ) {
       console.log('from controller:', response);
       if( response.data === 'match found') {
-        $window.location.href = '/garden#!';
+        $window.location.href= '/garden';
       } // end match found
       else {
         console.log(vm.loggedIn);
-        $window.location.href = '/failure#!';
+        $window.location.href = '/failure';
       } // end error
     }); // end UserService
   }; // end loginUser

@@ -1,1 +1,8 @@
-<a href="#!/plant-specs">add new plant</a>
+  <a href="#!/plant-specs">add new plant</a>
+
+  <div ng-init='pc.displayPlants()'>
+    <div ng-repeat='plant in pc.plantsToBeDisplayed'>
+      {{ plant.common_name }}
+    </div>
+    <!-- plants will display here  -->
+  </div>

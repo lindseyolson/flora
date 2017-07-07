@@ -2,14 +2,16 @@ app.controller( 'PlantController', function( PlantService ) {
   var vm = this;
   vm.plantData = plantData;
 
+  vm.displayPlants = function() {
+    console.log('in displayPlants');
+      PlantService.displayPlants().then( function( data ) {
+        vm.plantsToBeDisplayed = data;
+      }); // end PlantService
+  }; // end displayPlants
+
   vm.plant = {
-    // common_name: 'common name',
     life_form: 1,
     exposure: 1,
-    // height: 'height',
-    // width: 'width',
-    // flower_color: 'flower color',
-    // bloom_time: 'bloom time'
     mn_native: 1
   };
 
