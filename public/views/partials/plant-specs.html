@@ -14,8 +14,9 @@
 
 
 <div id="EditableFormCtrl">
-  <form editable-form name="editableForm"  onaftersave="pc.savePlantSpecs()">
+  <form editable-form name="editableForm" >
     <div>
+       <!-- onaftersave="pc.savePlantSpecs()" -->
       <!-- Common Name -->
       <span class="title">Common Name: </span>
      <span e-placeholder='common name' class='input' editable-text="pc.plant.common_name" e-name="common_name" e-required>
@@ -66,6 +67,20 @@
        {{ pc.plant.bloom_time || 'empty' }}</span>
     </div>
 
+    <div>
+      <!-- MN Native -->
+      <span class="title">MN Native: </span>
+      <span editable-select="pc.plant.mn_native" e-name="mn_native" e-ng-options="m.id as m.text for m in pc.mn_native">
+        {{ (pc.mn_native | filter:{value: plant.mn_native})[0].text  || 'not set'}}
+      </span>
+    </div>
+
+    <!-- Notes -->
+    <span class="title">Notes: </span>
+    <span e-placeholder='Notes' class='input' editable-text="pc.plant.notes" e-name="notes">
+     {{ pc.plant.mn_notes || 'empty' }}</span>
+  </div>
+
     <div class="buttons">
       <!-- button to show form -->
       <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
@@ -83,4 +98,4 @@
     </div>
   </form>
 </div>
-<button type="button" ng-click='pc.savePlantSpecs()'></button>
+<button type="button" ng-click='pc.savePlantSpecs()'>button</button>

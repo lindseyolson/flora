@@ -12,7 +12,15 @@ mongoose.connect('localhost:27017/gardenApp');
 
 // schema
 var plantSchema = new mongoose.Schema({
-  data: String
+  common_name: String,
+  life_form: String,
+  exposure: String,
+  height: String,
+  width: String,
+  flower_color: String,
+  bloom_time: String,
+  mn_native: Boolean,
+  notes: String
 }); // end schema
 
 // plant model
@@ -20,7 +28,7 @@ var plantModel = mongoose.model('plants', plantSchema);
 
 // POST //
 router.post('/', function(req,res){
-  console.log('/plants GET hit:', req.body);
+  console.log('/plants POST hit:', req.body);
 }); // end get
 
 module.exports = router;
