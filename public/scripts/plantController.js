@@ -1,4 +1,4 @@
-app.controller( 'PlantController', function( PlantService ) {
+app.controller( 'PlantController', function( PlantService, $filter ) {
   var vm = this;
   vm.plantData = plantData;
   vm.plant = {
@@ -8,10 +8,15 @@ app.controller( 'PlantController', function( PlantService ) {
     grouping: 1
   };
 
+  vm.showPlantSpecs = {
+
+  }
+
   vm.displayPlants = function() {
     console.log('in displayPlants');
       PlantService.displayPlants().then( function( data ) {
         vm.plantsToDisplay = data;
+        console.log(data);
       }); // end PlantService
   }; // end displayPlants
 
@@ -23,10 +28,63 @@ app.controller( 'PlantController', function( PlantService ) {
     }); // end PlantService
   }; // end savePlantSpecs
 
+
+  vm.showLifeForm = function (plant) {
+    console.log('plant:', plant);
+    if (plant.life_form){
+      var selected = $filter('filter')(vm.life_form, {
+        id: plant.life_form
+      });
+      return selected.length ? selected[0].text : 'Not set';
+    }
+  }; // end showLifeForm
+
+  vm.showExposure = function (plant) {
+    console.log('plant:', plant);
+    if (plant.exposure){
+      var selected = $filter('filter')(vm.exposure, {
+        id: plant.exposure
+      });
+      return selected.length ? selected[0].text : 'Not set';
+    }
+  }; // end showExposure
+
+  vm.showMnNative = function (plant) {
+    console.log('plant:', plant);
+    if (plant.mn_native){
+      var selected = $filter('filter')(vm.mn_native, {
+        id: plant.mn_native
+      });
+      return selected.length ? selected[0].text : 'Not set';
+    }
+  }; // end showMnNative
+
+  vm.showGrouping = function (plant) {
+    console.log('plant:', plant);
+    if (plant.grouping){
+      var selected = $filter('filter')(vm.grouping, {
+        id: plant.grouping
+      });
+      return selected.length ? selected[0].text : 'Not set';
+    }
+  }; // end showExposure
+
   vm.updatePlantSpecs = function(index) {
-    var id = vm.plantsToDisplay[index]._id;
-    console.log(id);
-    PlantService.updatePlantSpecs(id); // end PlantService
+    var plant = vm.plantsToDisplay[index];
+    var id = plant._id;
+    updatedPlantSpecs = {
+      common_name: plant.common_name,
+      life_form: plant.life_form,
+      exposure: plant.exposure,
+      height: plant.height,
+      width: plant.width,
+      flower_color: plant.flower_color,
+      bloom_time: plant.bloom_time,
+      mn_native: plant.mn_native,
+      grouping: plant.grouping,
+      notes: plant.notes
+    };
+    PlantService.updatePlantSpecs( id, updatedPlantSpecs ); // end PlantService
   }; // end updatePlantSpecs
 
 
@@ -35,7 +93,7 @@ app.controller( 'PlantController', function( PlantService ) {
     {id: 2, text: 'Grasses, Sedges and Rushes'},
     {id: 3, text: 'Trees and Shrubs'},
     {id: 4, text: 'Vines'}
-    ];
+  ];
 
   vm.exposure = [
     {id: 1, text: 'full sun'},
@@ -56,7 +114,7 @@ app.controller( 'PlantController', function( PlantService ) {
   //   {id: 8, text: 'purple'},
   //   {id: 9, text: 'pink'}
   // ];
-  //
+
   // vm.bloomTime = [
   //   {id: 1, text: 'early spring'},
   //   {id: 2, text: 'late spring'},

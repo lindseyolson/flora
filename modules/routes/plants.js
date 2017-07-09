@@ -13,14 +13,14 @@ mongoose.connect('localhost:27017/gardenApp');
 // schema
 var plantSchema = new mongoose.Schema({
   common_name: String,
-  life_form: String,
-  exposure: String,
+  life_form: Number,
+  exposure: Number,
   height: String,
   width: String,
   flower_color: String,
   bloom_time: String,
-  mn_native: String,
-  grouping: String,
+  mn_native: Number,
+  grouping: Number,
   notes: String
 }); // end schema
 
@@ -48,9 +48,12 @@ router.post('/', function( req,res ){
 // PUT //
 router.put('/:id', function ( req, res ){
   var id = req.params.id;
-  plantModel.update({_id: id}).then(function(){
+  var updatedPlantSpecs = req.body;
+  plantModel.update(
+    {_id: id}, updatedPlantSpecs).then(function(){
       res.sendStatus(200);
     });
 });
+
 
 module.exports = router;
