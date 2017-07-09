@@ -1,1 +1,8 @@
-wish list here
+<a href="#!/plant-specs">add new plant</a>
+
+<div ng-init='pc.displayPlants()'>
+  <div ng-if='plant.grouping == 2' ng-repeat='plant in pc.plantsToBeDisplayed'>
+    <a href='#!/plant-specs'>{{ plant.common_name }}</a>
+  </div>
+  <!-- plants will display here  -->
+</div>

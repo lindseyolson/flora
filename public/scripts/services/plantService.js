@@ -15,4 +15,14 @@ app.service ('PlantService', function( $http ){
     }); // end $http
   }; // end savePlantSpecs
 
+  sv.updatePlantSpecs = function( id ) {
+    return $http({
+      method: 'PUT',
+      url: '/plants',
+      data: id
+    }).then( function( response ){
+      console.log('in service, back from server:', response);
+    }); // end $http
+  }; // end savePlantSpecs
+
 }); // end PlantService

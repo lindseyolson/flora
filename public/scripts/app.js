@@ -17,5 +17,8 @@ app.config( function( $routeProvider ) {
   }).when ('/plant-specs', {
     templateUrl: 'views/partials/plant-specs.html',
     controller: 'PlantController as pc'
+  }).when ('/wishlist-plant-specs', {
+    templateUrl: 'views/partials/wishlist-plant-specs.html',
+    controller: 'PlantController as pc'
   });
 }); // end app.config

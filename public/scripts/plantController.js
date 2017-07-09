@@ -1,19 +1,19 @@
 app.controller( 'PlantController', function( PlantService ) {
   var vm = this;
   vm.plantData = plantData;
+  vm.plant = {
+    life_form: 1,
+    exposure: 1,
+    mn_native: 1,
+    grouping: 1
+  };
 
   vm.displayPlants = function() {
     console.log('in displayPlants');
       PlantService.displayPlants().then( function( data ) {
-        vm.plantsToBeDisplayed = data;
+        vm.plantsToDisplay = data;
       }); // end PlantService
   }; // end displayPlants
-
-  vm.plant = {
-    life_form: 1,
-    exposure: 1,
-    mn_native: 1
-  };
 
   vm.savePlantSpecs = function() {
     console.log(vm.plant);
@@ -22,6 +22,13 @@ app.controller( 'PlantController', function( PlantService ) {
       console.log('from controller:', response);
     }); // end PlantService
   }; // end savePlantSpecs
+
+  vm.updatePlantSpecs = function(index) {
+    var id = vm.plantsToDisplay[index]._id;
+    console.log(id);
+    PlantService.updatePlantSpecs(id); // end PlantService
+  }; // end updatePlantSpecs
+
 
   vm.life_form = [
     {id: 1, text: 'Ferns and Flowers'},
@@ -63,6 +70,11 @@ app.controller( 'PlantController', function( PlantService ) {
     {id: 1, text: 'yes'},
     {id: 2, text: 'no'}
   ];
+
+  vm.grouping = [
+    {id: 1, text: 'garden list'},
+    {id: 2, text: 'wish list'}
+    ];
 
 
 }); // end TypeaheadController

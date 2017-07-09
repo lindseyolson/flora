@@ -20,6 +20,7 @@ var plantSchema = new mongoose.Schema({
   flower_color: String,
   bloom_time: String,
   mn_native: String,
+  grouping: String,
   notes: String
 }); // end schema
 
@@ -28,7 +29,7 @@ var plantModel = mongoose.model('plantModel', plantSchema);
 
 // GET //
 router.get('/', function( req, res ){
-  console.log('/plants GET hit');
+  console.log('/plants GET route hit');
   plantModel.find().then( function( data ){
     console.log( data );
     res.send( data );
@@ -37,10 +38,19 @@ router.get('/', function( req, res ){
 
 // POST //
 router.post('/', function( req,res ){
-  console.log('/plants POST hit:', req.body);
+  console.log('/plants POST route hit:', req.body);
   var newRecord = plantModel(req.body);
   newRecord.save();
   res.sendStatus(201);
 }); // end post
+
+
+// PUT //
+router.put('/:id', function ( req, res ){
+  var id = req.params.id;
+  plantModel.update({_id: id}).then(function(){
+      res.sendStatus(200);
+    });
+});
 
 module.exports = router;
