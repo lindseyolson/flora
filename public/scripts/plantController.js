@@ -30,7 +30,6 @@ app.controller( 'PlantController', function( PlantService, $filter ) {
 
 
   vm.showLifeForm = function (plant) {
-    console.log('plant:', plant);
     if (plant.life_form){
       var selected = $filter('filter')(vm.life_form, {
         id: plant.life_form
@@ -40,7 +39,6 @@ app.controller( 'PlantController', function( PlantService, $filter ) {
   }; // end showLifeForm
 
   vm.showExposure = function (plant) {
-    console.log('plant:', plant);
     if (plant.exposure){
       var selected = $filter('filter')(vm.exposure, {
         id: plant.exposure
@@ -50,7 +48,6 @@ app.controller( 'PlantController', function( PlantService, $filter ) {
   }; // end showExposure
 
   vm.showMnNative = function (plant) {
-    console.log('plant:', plant);
     if (plant.mn_native){
       var selected = $filter('filter')(vm.mn_native, {
         id: plant.mn_native
@@ -60,7 +57,6 @@ app.controller( 'PlantController', function( PlantService, $filter ) {
   }; // end showMnNative
 
   vm.showGrouping = function (plant) {
-    console.log('plant:', plant);
     if (plant.grouping){
       var selected = $filter('filter')(vm.grouping, {
         id: plant.grouping
