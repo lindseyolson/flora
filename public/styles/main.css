@@ -1,3 +1,11 @@
+.form {
+  padding-top: 8em;
+}
+
+.doneButton {
+  padding: 3em;
+}
+
 /*editable form*/
 #EditableFormCtrl {
    padding-top: 8em;

@@ -8,7 +8,7 @@ app.service ('PlantService', function( $http ){
     }); // end $http
   }; // end displayPlants
 
-  sv.savePlantSpecs = function( plantSpecs ) {
+  sv.savePlantSpecs = function( plantSpecs ) { // change this to *create* not *save*
     return $http.post( '/plants', plantSpecs ).then( function( response ){
       console.log('back from db:', response);
       return response;
@@ -24,5 +24,12 @@ app.service ('PlantService', function( $http ){
       console.log('in service, back from server:', response);
     }); // end $http
   }; // end savePlantSpecs
+
+  sv.displayPlantDetails = function( id ) {
+    return $http.get( '/plants/' + id ).then(function( data ){
+      console.log('back from db:', data.data);
+      return data.data;
+    }); // end $http
+  }; // end displayPlantDetails
 
 }); // end PlantService

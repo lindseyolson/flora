@@ -1,0 +1,114 @@
+<div>
+  <angucomplete-alt
+    class="angucomplete-dropdown angucomplete-searching"
+    placeholder="Search plants"
+    pause="100"
+    selected-object="pc.selectedPlant"
+    local-data="pc.plantData"
+    search-fields="common_name"
+    title-field="common_name"
+    input-class="form-control form-control-small"
+    minlength="1">
+  </angucomplete-alt>
+</div>
+
+<div id="EditableFormCtrl" ng-show='pc.selectedPlant'>
+  <form editable-form name="editableForm" onaftersave="pc.savePlantSpecs()">
+    <button type="button" class="btn btn-default" ng-click="pc.upload()">
+      Upload <span class="caret"></span></button>
+          <div style="margin-top:10px;">
+          <!-- Show the thumbnail only when the picture is uploaded -->
+              <a href="{{plant.picture.url}}" class="thumbnail" ng-if="plant.picture">
+                <!-- the picture is rendered with width: 500 and sharpened -->
+                <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen'} }}">
+              </a>
+          </div>
+
+    <div>
+      <!-- Common Name -->
+      <span class="title">Common Name: </span>
+     <span e-placeholder='common name' class='input' editable-text="pc.selectedPlant.originalObject.common_name" e-name="common_name" e-required>
+       {{ pc.selectedPlant.originalObject.common_name }}</span>
+    </div>
+
+    <div>
+      <!-- Life Form -->
+      <span class="title">Life Form: </span>
+      <span e-placeholder='common name' class='input' editable-text="pc.selectedPlant.originalObject.life_form" e-name="life_form">
+        {{ pc.selectedPlant.originalObject.life_form }}</span>
+    </div>
+
+    <div>
+      <!-- Exposure -->
+      <span class="title">Exposure: </span>
+      <span e-placeholder='exposure' class='input' editable-text="pc.selectedPlant.originalObject.exposure" e-name="exposure">
+        {{ pc.selectedPlant.originalObject.exposure }}</span>
+    </div>
+
+    <div>
+      <!-- Height -->
+      <span class="title">Height: </span>
+      <span e-placeholder='height' class='input' editable-text="pc.selectedPlant.originalObject.height" e-name="height">
+        {{ pc.selectedPlant.originalObject.height }}</span>
+    </div>
+
+    <div>
+      <!-- Width -->
+      <span class="title">Width: </span>
+      <span e-placeholder='width' class='input' editable-text="pc.selectedPlant.originalObject.width" e-name="width">
+        {{ pc.selectedPlant.originalObject.width }}</span>
+    </div>
+
+    <div>
+      <!-- Flower Color -->
+      <span class="title">Flower Color: </span>
+      <span e-placeholder='flower_color' class='input' editable-text="pc.selectedPlant.originalObject.flower_color" e-name="flower_color">
+        {{ pc.selectedPlant.originalObject.flower_color }}</span>
+    </div>
+
+    <div>
+      <!-- Bloom Time -->
+      <span class="title">Bloom Time: </span>
+      <span e-placeholder='bloom_time' class='input' editable-text="pc.selectedPlant.originalObject.bloom_time" e-name="bloom_time">
+        {{ pc.selectedPlant.originalObject.bloom_time }}</span>
+    </div>
+
+    <div>
+      <!-- MN Native -->
+      <span class="title">MN Native: </span>
+      <span e-placeholder='mn_native' class='input' editable-text="pc.selectedPlant.originalObject.mn_native" e-name="mn_native">
+        {{ pc.selectedPlant.originalObject.mn_native }}</span>
+    </div>
+
+    <!-- <div> -->
+      <!-- List -->
+      <!-- <span class="title">List: </span>
+      <span editable-select="pc.displayPlant.grouping" e-name="grouping" e-ng-options="g.id as g.text for g in pc.grouping">
+        {{ (pc.grouping | filter:{value: pc.displayPlant.grouping})[0].text  }}
+      </span>
+    </div> -->
+
+    <div>
+    <!-- Notes -->
+    <span class="title">Notes: </span>
+    <span e-placeholder='Notes' class='input' editable-textarea="pc.plant.notes" e-name="notes">
+     {{ pc.plant.notes || 'empty' }}</span>
+  </div>
+
+  <div>
+    <!-- button to show form -->
+    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+      Edit
+    </button>
+    <!-- buttons to submit / cancel form -->
+    <span >
+      <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+        Save
+      </button>
+      <button ng-show="editableForm.$visible" type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+        Cancel
+      </button>
+    </span>
+  </div>
+</form>
+</div>

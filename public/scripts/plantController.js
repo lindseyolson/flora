@@ -1,16 +1,31 @@
-app.controller( 'PlantController', function( PlantService, $filter ) {
+app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams ) {
   var vm = this;
   vm.plantData = plantData;
-  vm.plant = {
-    life_form: 1,
-    exposure: 1,
-    mn_native: 1,
+  vm.plantsToDisplay = [];
+  vm.plant = {};
+  vm.displayPlant = {
     grouping: 1
   };
 
-  vm.showPlantSpecs = {
+  vm.upload = function(){
+    filepickerService.pick(
+        {
+            mimetype: 'image/*',
+            language: 'en',
+            services: ['COMPUTER','DROPBOX','GOOGLE_DRIVE','IMAGE_SEARCH'],
+            openTo: 'COMPUTER'
+        },
+        function(Blob){
+            console.log(JSON.stringify(Blob));
+            vm.selectedPlant.originalObject.picture = Blob;
+            // vm.$apply();
+        }
+    );
+  };
 
-  }
+  vm.toggleShowForm = function() {
+    vm.showForm = !vm.showForm;
+  }; // end toggleShowForm
 
   vm.displayPlants = function() {
     console.log('in displayPlants');
@@ -21,114 +36,68 @@ app.controller( 'PlantController', function( PlantService, $filter ) {
   }; // end displayPlants
 
   vm.savePlantSpecs = function() {
-    console.log(vm.plant);
-    var plantSpecs = vm.plant;
+    vm.selectedPlant.originalObject.grouping = vm.grouping;
+    var plantSpecs = vm.selectedPlant.originalObject;
+    // plantSpecs.grouping = vm.grouping;
+    console.log(plantSpecs);
     PlantService.savePlantSpecs( plantSpecs ).then(function( response ) {
       console.log('from controller:', response);
     }); // end PlantService
   }; // end savePlantSpecs
 
+  vm.displayPlantDetails = function() {
+    var id = $routeParams.id;
+    console.log('in displayPlantDetails:', id);
+    PlantService.displayPlantDetails( id ).then(function( data ){
+      console.log( data );
+      vm.plant = data;
+    }); // end PlantService
+  }; // end displayPlantDetails
 
-  vm.showLifeForm = function (plant) {
-    if (plant.life_form){
-      var selected = $filter('filter')(vm.life_form, {
-        id: plant.life_form
-      });
-      return selected.length ? selected[0].text : 'Not set';
-    }
-  }; // end showLifeForm
-
-  vm.showExposure = function (plant) {
-    if (plant.exposure){
-      var selected = $filter('filter')(vm.exposure, {
-        id: plant.exposure
-      });
-      return selected.length ? selected[0].text : 'Not set';
-    }
-  }; // end showExposure
-
-  vm.showMnNative = function (plant) {
-    if (plant.mn_native){
-      var selected = $filter('filter')(vm.mn_native, {
-        id: plant.mn_native
-      });
-      return selected.length ? selected[0].text : 'Not set';
-    }
-  }; // end showMnNative
-
-  vm.showGrouping = function (plant) {
-    if (plant.grouping){
-      var selected = $filter('filter')(vm.grouping, {
-        id: plant.grouping
-      });
-      return selected.length ? selected[0].text : 'Not set';
-    }
-  }; // end showExposure
-
-  vm.updatePlantSpecs = function(index) {
-    var plant = vm.plantsToDisplay[index];
-    var id = plant._id;
+  vm.updatePlantSpecs = function() {
+    // var plant = vm.plantsToDisplay[index];
+    // var id = plant._id;
+    var id = $routeParams.id;
     updatedPlantSpecs = {
-      common_name: plant.common_name,
-      life_form: plant.life_form,
-      exposure: plant.exposure,
-      height: plant.height,
-      width: plant.width,
-      flower_color: plant.flower_color,
-      bloom_time: plant.bloom_time,
-      mn_native: plant.mn_native,
-      grouping: plant.grouping,
-      notes: plant.notes
+      common_name: vm.plant.common_name,
+      life_form: vm.plant.life_form,
+      exposure: vm.plant.exposure,
+      height: vm.plant.height,
+      width: vm.plant.width,
+      flower_color: vm.plant.flower_color,
+      bloom_time: vm.plant.bloom_time,
+      mn_native: vm.plant.mn_native,
+      grouping: vm.plant.grouping,
+      notes: vm.plant.notes
     };
     PlantService.updatePlantSpecs( id, updatedPlantSpecs ); // end PlantService
   }; // end updatePlantSpecs
 
+  vm.showMnNative = function(plant) {
+    if (plant.mn_native === 'TRUE') {
+      return 'yes';
+    }
+    else {
+      return 'no';
+    }
+  }; // end showMnNative
 
-  vm.life_form = [
-    {id: 1, text: 'Ferns and Flowers'},
-    {id: 2, text: 'Grasses, Sedges and Rushes'},
-    {id: 3, text: 'Trees and Shrubs'},
-    {id: 4, text: 'Vines'}
-  ];
-
-  vm.exposure = [
-    {id: 1, text: 'full sun'},
-    {id: 2, text: 'full sun, partial sun'},
-    {id: 3, text: 'partial sun'},
-    {id: 4, text: 'partial sun, full shade'},
-    {id: 5, text: 'full shade'}
-  ];
-
-  // vm.flowerColor = [
-  //   {id: 1, text: 'white'},
-  //   {id: 2, text: 'black'},
-  //   {id: 3, text: 'red'},
-  //   {id: 4, text: 'orange'},
-  //   {id: 5, text: 'yellow'},
-  //   {id: 6, text: 'green'},
-  //   {id: 7, text: 'blue'},
-  //   {id: 8, text: 'purple'},
-  //   {id: 9, text: 'pink'}
-  // ];
-
-  // vm.bloomTime = [
-  //   {id: 1, text: 'early spring'},
-  //   {id: 2, text: 'late spring'},
-  //   {id: 3, text: 'early summer'},
-  //   {id: 4, text: 'mid summer'},
-  //   {id: 5, text: 'late spring'},
-  //   {id: 6, text: 'early summer'}
-  // ];
-
-  vm.mn_native = [
-    {id: 1, text: 'yes'},
-    {id: 2, text: 'no'}
-  ];
 
   vm.grouping = [
     {id: 1, text: 'garden list'},
     {id: 2, text: 'wish list'}
     ];
+
+  vm.life_form = [
+    {id: 1, text: 'Ferns and Wildflowers'},
+    {id: 2, text: 'Grasses, Sedges and Rushes'},
+    {id: 3, text: 'Trees and Shrubs'},
+    {id: 4, text: 'Vines'}
+  ];
+
+
+
+
 
 
 }); // end TypeaheadController

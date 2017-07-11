@@ -2,6 +2,7 @@ var express = require ('express');
 var bodyParser = require ('body-parser');
 var mongoose = require ('mongoose');
 var router = express.Router();
+var Schema = mongoose.Schema;
 
 // uses
 router.use ( bodyParser.urlencoded( { extended:true } ) );
@@ -12,15 +13,16 @@ mongoose.connect('localhost:27017/gardenApp');
 
 // schema
 var plantSchema = new mongoose.Schema({
+  picture: Schema.Types.Mixed,
   common_name: String,
-  life_form: Number,
-  exposure: Number,
+  life_form: String,
+  exposure: String,
   height: String,
   width: String,
   flower_color: String,
   bloom_time: String,
-  mn_native: Number,
-  grouping: Number,
+  mn_native: String,
+  grouping: String,
   notes: String
 }); // end schema
 
@@ -34,6 +36,14 @@ router.get('/', function( req, res ){
     console.log( data );
     res.send( data );
   }); // end find()
+}); // end get
+
+router.get('/:id', function( req, res ){
+  console.log('/plants GET by id route hit');
+  var id = req.params.id;
+  plantModel.findOne({_id: id}).then(function( data ){
+    res.send( data );
+  }); // end findbyId
 }); // end get
 
 // POST //

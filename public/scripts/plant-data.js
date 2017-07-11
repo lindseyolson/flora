@@ -2,7 +2,7 @@ var plantData = [
   {
     "mn_native": "TRUE",
     "common_name": "Canada Mayflower",
-    "life_form": "Ferns and Wildflowers",
+    "life_form": 'Ferns and Wildflowers',
     "exposure": "full shade",
     "height": "0.0 - 0.5",
     "width": "0.5-1",
