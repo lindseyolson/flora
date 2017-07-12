@@ -1,16 +1,77 @@
-.form {
-  padding-top: 8em;
+.logoheader {
+  height: 3em;
+  color: black;
+  background-color: #49AB7A;
 }
 
-.doneButton {
-  padding: 3em;
+#logo{
+  color: white;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  padding-left: 6.7em;
+  margin-top: 0.35em;
+  font-family: 'Zilla Slab', serif;
+  font-size: 24px;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-sm {
+  float: right;
+  margin-top: .4em;
+  margin-right: .4em;
+  background-color: #49AB7A;
+  color: white;
+  border-color: #c1c1c1;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #c1c1c1;
+  border: black;
+
+}
+
+.btn-primary:hover,
+.btn-primary.active:hover {
+  background-color: #7a7a7a;
+  border-color: #a5a5a5;
+}
+
+.btn-primary:active:focus,
+.btn-primary:active.focus {
+  background-color: #7a7a7a;
+  border-color: #a5a5a5;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #7a7a7a;
+  border-color: #a5a5a5;
+}
+
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary .badge {
+  background-color: #a5a5a5;
+  border-color: #a5a5a5;
+}
+
+
+
+
+.container-fluid {
+  padding: 0em;
+}
+
+#EditableFormCtrl {
+  padding-top: 5em;
 }
 
 /*editable form*/
-#EditableFormCtrl {
-   padding-top: 8em;
-}
-
 .input {
   width: 250px;
 }

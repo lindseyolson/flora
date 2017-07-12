@@ -27,16 +27,14 @@ app.config( function( $routeProvider, filepickerProvider ) {
   filepickerProvider.setKey('ASsVBhFqLQGGBwDxVquEqz');
 }); // end app.config
 
-
-var client = filestack.init('ASsVBhFqLQGGBwDxVquEqz');
-
-function showPicker() {
-    client.pick({
-      accept: 'image/*',
-      maxFiles: 1
-    }).then(function(result) {
-        console.log(JSON.stringify(result.filesUploaded))
-    });
-}; // end client filestack
-
-client.retrieve('eEHjciGBSAyaLAi868Ms');
+// client.retrieve('eEHjciGBSAyaLAi868Ms');
+// var client = filestack.init('ASsVBhFqLQGGBwDxVquEqz');
+//
+// function showPicker() {
+//     client.pick({
+//       accept: 'image/*',
+//       maxFiles: 1
+//     }).then(function(result) {
+//         console.log(JSON.stringify(result.filesUploaded))
+//     });
+// }; // end client filestack

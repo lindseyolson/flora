@@ -22,7 +22,6 @@ var plantSchema = new mongoose.Schema({
   flower_color: String,
   bloom_time: String,
   mn_native: String,
-  grouping: String,
   notes: String
 }); // end schema
 

@@ -1,16 +1,32 @@
-  <a href="#!/add-new-plant">add new plant</a>
-
-  <div class="row" ng-init='pc.displayPlants()'>
+  <div class='list-group' ng-init='pc.displayPlants()'>
   <div ng-repeat="plant in pc.plantsToDisplay">
-      <div class="col-md-4 col-xs-6 col-sm-offset-0">
-      <div class="thumbnail">
+      <a ng-href="#!/detail/{{plant._id}}" class='list-group-item list-group-item-action flex-column align-items-start'>
+      <div class="d-flex w-100 justify-content-between">
         <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
-        <div class="caption text-center">
-          <h3>{{plant.common_name}}</h3>
-          <!-- <p><label>Super powers: </label> {{superhero.superPowers}}</p> -->
-          <div class="text-right"><a ng-href="#!/detail/{{plant._id}}" class="btn btn-danger" role="button">View</a> </div>
-        </div>
+        <h5 class="mb-1">{{plant.common_name}}</h5>
+        <!-- <h3 class='.md-button'>{{plant.common_name}}</h3> -->
+        <!-- <div class="text-right"><a ng-href="#!/detail/{{plant._id}}" class="btn btn-danger" role="button">View</a>
+        </div> -->
       </div>
-      </div>
+      </a>
   </div>
-  </div>
+</div>
+
+
+<!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">List group item heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a> -->
+
+<!-- <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
+<div class="caption text-center">
+  <h3 class='.md-button'>{{plant.common_name}}</h3>
+  <div class="text-right"><a ng-href="#!/detail/{{plant._id}}" class="btn btn-danger" role="button">View</a> </div>
+</div>
+
+</div>
+</div> -->

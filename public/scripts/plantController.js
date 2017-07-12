@@ -3,17 +3,17 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
   vm.plantData = plantData;
   vm.plantsToDisplay = [];
   vm.plant = {};
-  vm.displayPlant = {
-    grouping: 1
-  };
 
   vm.upload = function(){
     filepickerService.pick(
         {
             mimetype: 'image/*',
             language: 'en',
-            services: ['COMPUTER','DROPBOX','GOOGLE_DRIVE','IMAGE_SEARCH'],
-            openTo: 'COMPUTER'
+            services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
+            openTo: 'COMPUTER',
+            cropDim: [400, 300],
+            roundedCorners: { radius: 1000 },
+            imageQuality: 80
         },
         function(Blob){
             console.log(JSON.stringify(Blob));
@@ -22,10 +22,6 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
         }
     );
   };
-
-  vm.toggleShowForm = function() {
-    vm.showForm = !vm.showForm;
-  }; // end toggleShowForm
 
   vm.displayPlants = function() {
     console.log('in displayPlants');
@@ -36,7 +32,7 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
   }; // end displayPlants
 
   vm.savePlantSpecs = function() {
-    vm.selectedPlant.originalObject.grouping = vm.grouping;
+    // vm.selectedPlant.originalObject.grouping = vm.grouping;
     var plantSpecs = vm.selectedPlant.originalObject;
     // plantSpecs.grouping = vm.grouping;
     console.log(plantSpecs);
@@ -67,7 +63,7 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
       flower_color: vm.plant.flower_color,
       bloom_time: vm.plant.bloom_time,
       mn_native: vm.plant.mn_native,
-      grouping: vm.plant.grouping,
+      // grouping: vm.grouping.text,
       notes: vm.plant.notes
     };
     PlantService.updatePlantSpecs( id, updatedPlantSpecs ); // end PlantService
@@ -83,10 +79,7 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
   }; // end showMnNative
 
 
-  vm.grouping = [
-    {id: 1, text: 'garden list'},
-    {id: 2, text: 'wish list'}
-    ];
+
 
   vm.life_form = [
     {id: 1, text: 'Ferns and Wildflowers'},
