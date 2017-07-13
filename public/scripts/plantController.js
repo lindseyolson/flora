@@ -1,8 +1,12 @@
-app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams ) {
+app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams, $location ) {
   var vm = this;
   vm.plantData = plantData;
   vm.plantsToDisplay = [];
   vm.plant = {};
+  vm.user = {
+    group: 1
+  };
+
 
   vm.upload = function(){
     filepickerService.pick(
@@ -11,13 +15,30 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
             language: 'en',
             services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
             openTo: 'COMPUTER',
-            cropDim: [400, 300],
-            roundedCorners: { radius: 1000 },
+            cropDim: [500, 500],
             imageQuality: 80
         },
         function(Blob){
             console.log(JSON.stringify(Blob));
             vm.selectedPlant.originalObject.picture = Blob;
+            // vm.$apply();
+        }
+    );
+  };
+
+  vm.reupload = function(){
+    filepickerService.pick(
+        {
+            mimetype: 'image/*',
+            language: 'en',
+            services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
+            openTo: 'COMPUTER',
+            cropDim: [500, 500],
+            imageQuality: 80
+        },
+        function(Blob){
+            console.log(JSON.stringify(Blob));
+            vm.plant.picture = Blob;
             // vm.$apply();
         }
     );
@@ -31,13 +52,18 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
       }); // end PlantService
   }; // end displayPlants
 
-  vm.savePlantSpecs = function() {
+  vm.savePlantSpecs = function(list) {
     // vm.selectedPlant.originalObject.grouping = vm.grouping;
     var plantSpecs = vm.selectedPlant.originalObject;
     // plantSpecs.grouping = vm.grouping;
     console.log(plantSpecs);
-    PlantService.savePlantSpecs( plantSpecs ).then(function( response ) {
-      console.log('from controller:', response);
+    PlantService.savePlantSpecs( plantSpecs ).then(function() {
+      if (list === 'garden list') {
+        $location.url('/plants');
+      }
+      else {
+        $location.url('/wishlist');
+      }
     }); // end PlantService
   }; // end savePlantSpecs
 
@@ -63,34 +89,39 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
       flower_color: vm.plant.flower_color,
       bloom_time: vm.plant.bloom_time,
       mn_native: vm.plant.mn_native,
-      // grouping: vm.grouping.text,
-      notes: vm.plant.notes
+      list: vm.plant.list,
+      notes: vm.plant.notes,
+      picture: vm.plant.picture
     };
     PlantService.updatePlantSpecs( id, updatedPlantSpecs ); // end PlantService
   }; // end updatePlantSpecs
 
-  vm.showMnNative = function(plant) {
-    if (plant.mn_native === 'TRUE') {
-      return 'yes';
-    }
-    else {
-      return 'no';
-    }
-  }; // end showMnNative
 
 
+  vm.deletePlant = function(list) {
+    console.log(list);
+    var id = $routeParams.id;
+    PlantService.deletePlant(id).then(function() {
+      if (list === 'garden list') {
+        $location.url('/plants');
+      }
+      else {
+        $location.url('/wishlist');
+      }
+    });
+  }; // end deletePlant
 
+  // vm.deletePlantFromWishList = function() {
+  //   var id = $routeParams.id;
+  //   PlantService.deletePlant(id);
+  //   $location.url('/wishlist');
+  // }; // end deletePlant
 
-  vm.life_form = [
-    {id: 1, text: 'Ferns and Wildflowers'},
-    {id: 2, text: 'Grasses, Sedges and Rushes'},
-    {id: 3, text: 'Trees and Shrubs'},
-    {id: 4, text: 'Vines'}
-  ];
-
-
-
-
-
+  // vm.life_form = [
+  //   {id: 1, text: 'Ferns and Wildflowers'},
+  //   {id: 2, text: 'Grasses, Sedges and Rushes'},
+  //   {id: 3, text: 'Trees and Shrubs'},
+  //   {id: 4, text: 'Vines'}
+  // ];
 
 }); // end TypeaheadController

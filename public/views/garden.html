@@ -9,11 +9,14 @@
     <title>garden app</title>
     <!-- styles -->
     <link type='text/css' rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link type='text/css' rel="stylesheet" href="vendors/xeditable.min.css">
     <link type='text/css' rel="stylesheet" href="vendors/angular-material.min.css">
+    <link type='text/css' rel="stylesheet" href="vendors/angucomplete-alt.css">
     <link type='text/css' rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
-    <!-- vendors -->
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+   <!-- vendors -->
     <script type='text/javascript' src="vendors/angular.min.js" charset="utf-8"></script>
     <script type='text/javascript' src="vendors/angular-route.min.js" charset="utf-8"></script>
     <script type='text/javascript' src="vendors/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
@@ -39,13 +42,13 @@
     <div ng-controller='UserController as uc'>
       <div class="row">
         <div class="col-md-12 logoheader">
-          <h3 id='logo'>effloresce</h3>
+          <h3 id='logo'>flora</h3>
           <button type="button" class="btn btn-secondary btn-sm" ng-click='uc.logoutUser()'>log out</button>
         </div>
       </div>
       <div class="btn-group-justified" data-toggle="buttons">
         <label class="btn-group">
-        <a class="btn btn-primary" href="#!/add-new-plant" role="button">add new plant</a>
+        <a class="btn btn-primary" href="#!/add-new-plant" role="button" ng-click='editableForm.$show()'>add new plant</a>
         </label>
         <label class="btn-group">
         <a class="btn btn-primary" href="#!/plants" role="button">my garden</a>

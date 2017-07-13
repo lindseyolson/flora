@@ -1,73 +1,83 @@
 <div id="EditableFormCtrl" ng-init='pc.displayPlantDetails()' layout='row'>
-	<p>Plant Details</p>
 	<img ng-src="{{pc.plant.picture.url | fpConvert: {filter:'sharpen', w:500} }}" />
-	<hr />
 
-  <form editable-form name="editableForm" onaftersave="pc.updatePlantSpecs()">
-      <div>
-      <!-- Common Name -->
-        <span e-placeholder='common name' class='input' editable-text="pc.plant.common_name" e-name="common_name" e-required>
-          {{ pc.plant.common_name }}</span>
+
+  <form class='container' editable-form name="editableForm" onaftersave="pc.updatePlantSpecs()">
+		<button type="button" class="btn btn-default" ng-click="pc.reupload()" ng-show="editableForm.$visible">
+			upload new photo <span class="caret"></span></button>
+					<!-- <div style="margin-top:10px;"> -->
+					<!-- Show the thumbnail only when the picture is uploaded -->
+							<!-- <a href="{{pc.plant.picture.url}}" class="thumbnail" ng-if="pc.plant.picture.url"> -->
+								<!-- the picture is rendered with width: 500 and sharpened -->
+								<!-- <img ng-src="{{pc.plant.picture.url | fpConvert: {filter:'sharpen'} }}"> -->
+							<!-- </a> -->
+					<!-- </div> -->
+
+<!-- Common Name -->
+			<div>
+				<span class="title">Common Name:</span>
+				<span e-placeholder='common name' class='input' editable-text="pc.plant.common_name" e-name="common_name" e-required>
+	        {{ pc.plant.common_name }}</span>
       </div>
 
      <div>
        <!-- Life Form -->
-       <span class="title">Life Form: </span>
+       <span class="title">Life Form:</span>
        <span e-placeholder='life form' class='input' editable-text="pc.plant.life_form" e-name="life_form">
          {{ pc.plant.life_form }}</span>
      </div>
     <div>
       <!-- Exposure -->
-      <span class="title">Exposure: </span>
+      <span class="title">Exposure:</span>
       <span e-placeholder='exposure' class='input' editable-text="pc.plant.exposure" e-name="exposure">
         {{ pc.plant.exposure }}</span>
     </div>
 
+		<div>
+			<!-- Bloom Time -->
+			<span class="title">Bloom Time:</span>
+			<span e-placeholder='bloom time' class='input' editable-text="pc.plant.bloom_time" e-name="bloom_time">
+			 {{ pc.plant.bloom_time || 'empty' }}</span>
+		</div>
+
     <div>
       <!-- Height -->
-      <span class="title">Height: </span>
+      <span class="title">Height:</span>
       <span e-placeholder='height' class='input' editable-text="pc.plant.height" e-name="height">
        {{ pc.plant.height || 'empty' }}</span>
     </div>
 
     <div>
       <!-- Width -->
-      <span class="title">Width: </span>
+      <span class="title">Width:</span>
       <span e-placeholder='width' class='input' editable-text="pc.plant.width" e-name="width">
        {{ pc.plant.width || 'empty' }}</span>
     </div>
 
     <div>
       <!-- Flower Color -->
-      <span class="title">Flower Color: </span>
+      <span class="title">Flower Color:</span>
       <span e-placeholder='flower color' class='input' editable-text="pc.plant.flower_color" e-name="flower_color">
        {{ pc.plant.flower_color || 'empty' }}</span>
     </div>
 
     <div>
-      <!-- Bloom Time -->
-      <span class="title">Bloom Time: </span>
-      <span e-placeholder='bloom time' class='input' editable-text="pc.plant.bloom_time" e-name="bloom_time">
-       {{ pc.plant.bloom_time || 'empty' }}</span>
-    </div>
-
-    <div>
       <!-- MN Native -->
-      <span class="title">MN Native: </span>
+      <span class="title">MN Native:</span>
       <span e-placeholder='MN native' class='input' editable-text="pc.plant.mn_native" e-name="mn_native">
-       {{ pc.showMnNative(pc.plant) }}</span>
+       {{ pc.plant.mn_native }}</span>
     </div>
 
-    <!-- <div> -->
+		<div>
       <!-- List -->
-      <!-- <span class="title">List: </span>
-      <span e-placeholder='list' class='input' editable-text="plant.grouping" e-name="grouping">
-       {{ plant.grouping || 'empty' }}</span>
-    </div> -->
+      <span class="title">List:</span>
+      <span e-placeholder='list' class='input' editable-text="pc.plant.list" e-name="list">
+        {{ pc.plant.list }}</span>
+    </div>
 
     <div>
     <!-- Notes -->
-    <span class="title">Notes: </span>
+    <span class="title">Notes:</span>
     <span e-placeholder='Notes' class='input' editable-text="pc.plant.notes" e-name="notes">
      {{ pc.plant.notes || 'empty' }}</span>
   </div>
@@ -77,6 +87,9 @@
     <!-- button to show form -->
     <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
       Edit
+    </button>
+		<button type="button" class="btn btn-default" ng-click="pc.deletePlant(pc.plant.list)" ng-show="!editableForm.$visible">
+      Delete
     </button>
 
     <!-- buttons to submit / cancel form -->

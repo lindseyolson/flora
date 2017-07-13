@@ -1,113 +1,127 @@
-<div>
-  <angucomplete-alt
-    class="angucomplete-dropdown angucomplete-searching"
-    placeholder="Search plants"
-    pause="100"
-    selected-object="pc.selectedPlant"
-    local-data="pc.plantData"
-    search-fields="common_name"
-    title-field="common_name"
-    input-class="form-control form-control-small"
-    minlength="1">
-  </angucomplete-alt>
+<div class="container">
+  <div>
+    <form id='newPlantForm'>
+<!-- Common Name -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='common_nameInput'>Common Name</label>
+    <!-- <div class="inner-addon left-addon">
+      <i class="glyphicon glyphicon-search"></i> -->
+      <angucomplete-alt
+        id='x3'
+        type='text'
+        placeholder="search plants"
+        pause="100"
+        selected-object="pc.selectedPlant"
+        local-data="pc.plantData"
+        search-fields="common_name"
+        title-field="common_name"
+        input-class="form-control form-control-small"
+        minlength="1"
+        ng-model='pc.selectedPlant.originalObject.common_name' >
+      </angucomplete-alt>
+    </div>
+  </div>
 </div>
 
-<div id="EditableFormCtrl" ng-show='pc.selectedPlant'>
-  <form editable-form name="editableForm" onaftersave="pc.savePlantSpecs()">
-    <button type="button" class="btn btn-default" ng-click="pc.upload()">
-      Upload <span class="caret"></span></button>
-          <div style="margin-top:10px;">
-          <!-- Show the thumbnail only when the picture is uploaded -->
-              <a href="{{plant.picture.url}}" class="thumbnail" ng-if="plant.picture">
-                <!-- the picture is rendered with width: 500 and sharpened -->
-                <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen'} }}">
-              </a>
-          </div>
 
-    <div>
-      <!-- Common Name -->
-      <span class="title">Common Name: </span>
-     <span e-placeholder='common name' class='input' editable-text="pc.selectedPlant.originalObject.common_name" e-name="common_name" e-required>
-       {{ pc.selectedPlant.originalObject.common_name }}</span>
-    </div>
-
-    <div>
-      <!-- Life Form -->
-      <span class="title">Life Form: </span>
-      <span e-placeholder='common name' class='input' editable-text="pc.selectedPlant.originalObject.life_form" e-name="life_form">
-        {{ pc.selectedPlant.originalObject.life_form }}</span>
-    </div>
-
-    <div>
-      <!-- Exposure -->
-      <span class="title">Exposure: </span>
-      <span e-placeholder='exposure' class='input' editable-text="pc.selectedPlant.originalObject.exposure" e-name="exposure">
-        {{ pc.selectedPlant.originalObject.exposure }}</span>
-    </div>
-
-    <div>
-      <!-- Height -->
-      <span class="title">Height: </span>
-      <span e-placeholder='height' class='input' editable-text="pc.selectedPlant.originalObject.height" e-name="height">
-        {{ pc.selectedPlant.originalObject.height }}</span>
-    </div>
-
-    <div>
-      <!-- Width -->
-      <span class="title">Width: </span>
-      <span e-placeholder='width' class='input' editable-text="pc.selectedPlant.originalObject.width" e-name="width">
-        {{ pc.selectedPlant.originalObject.width }}</span>
-    </div>
-
-    <div>
-      <!-- Flower Color -->
-      <span class="title">Flower Color: </span>
-      <span e-placeholder='flower_color' class='input' editable-text="pc.selectedPlant.originalObject.flower_color" e-name="flower_color">
-        {{ pc.selectedPlant.originalObject.flower_color }}</span>
-    </div>
-
-    <div>
-      <!-- Bloom Time -->
-      <span class="title">Bloom Time: </span>
-      <span e-placeholder='bloom_time' class='input' editable-text="pc.selectedPlant.originalObject.bloom_time" e-name="bloom_time">
-        {{ pc.selectedPlant.originalObject.bloom_time }}</span>
-    </div>
-
-    <div>
-      <!-- MN Native -->
-      <span class="title">MN Native: </span>
-      <span e-placeholder='mn_native' class='input' editable-text="pc.selectedPlant.originalObject.mn_native" e-name="mn_native">
-        {{ pc.selectedPlant.originalObject.mn_native }}</span>
-    </div>
-
-    <!-- <div> -->
-      <!-- List -->
-      <!-- <span class="title">List: </span>
-      <span e-placeholder='grouping' class='input' editable-text="pc.grouping.text" e-name="mn_native">
-        {{ pc.grouping.text }}</span>
-    </div> -->
-
-    <div>
-    <!-- Notes -->
-    <span class="title">Notes: </span>
-    <span e-placeholder='Notes' class='input' editable-textarea="pc.plant.notes" e-name="notes">
-     {{ pc.plant.notes || 'empty' }}</span>
+<!-- Life Form -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='life_formInput'>Life Form</label>
+    <input type='text' class='form-control' id='life_formInput' placeholder='life form' value='{{ pc.selectedPlant.originalObject.life_form }}' ng-model='pc.selectedPlant.originalObject.life_form' name="pc.selectedPlant.originalObject.life_form" ></input>
   </div>
+</div>
+
+<!-- Exposure -->
+<div class='row'>
+  <div class="form-group col-xs-12">
+    <label for='exposureInput'>Exposure</label>
+    <input type='text' class='form-control' id='exposureInput' placeholder='exposure' value='{{ pc.selectedPlant.originalObject.exposure }}' ng-model='pc.selectedPlant.originalObject.exposure' name="pc.selectedPlant.originalObject.exposure" ></input>
+  </div>
+</div>
+
+<!-- Height -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='heightInput'>Height</label>
+    <input type='text' class='form-control' id='heightInput' placeholder='height' value='{{ pc.selectedPlant.originalObject.height }}' ng-model='pc.selectedPlant.originalObject.height' name="pc.selectedPlant.originalObject.height" ></input>
+  </div>
+</div>
+
+<!-- Width -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='widthInput'>Width</label>
+    <input type='text' class='form-control' id='widthInput' placeholder='width' value='{{ pc.selectedPlant.originalObject.width }}' ng-model='pc.selectedPlant.originalObject.width' name="pc.selectedPlant.originalObject.width" ></input>
+  </div>
+</div>
+
+<!-- Flower Color -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='flower_colorInput'>Flower Color</label>
+    <input type='text' class='form-control' id='flower_colorInput' placeholder='flower color' value='{{ pc.selectedPlant.originalObject.flower_color }}' ng-model='pc.selectedPlant.originalObject.flower_color' name="pc.selectedPlant.originalObject.flower_color" ></input>
+  </div>
+</div>
+
+<!-- Bloom Time -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='bloom_timeInput'>Bloom Time</label>
+    <input type='text' class='form-control' id='bloom_timeInput' placeholder='bloom time' value='{{ pc.selectedPlant.originalObject.bloom_time }}' ng-model='pc.selectedPlant.originalObject.bloom_time' name="pc.selectedPlant.originalObject.bloom_time" ></input>
+  </div>
+</div>
+
+<!-- MN Native -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='mn_nativeInput'>MN Native</label>
+    <input type='text' class='form-control' id='mn_nativeInput' placeholder='mn native' value='{{ pc.selectedPlant.originalObject.mn_native }}' ng-model='pc.selectedPlant.originalObject.mn_native' name="pc.selectedPlant.originalObject.mn_native" ></input>
+  </div>
+</div>
+
+<!-- List -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='listInput'>List</label>
+    <input type='text' class='form-control' id='listInput' placeholder='list' value='{{ pc.selectedPlant.originalObject.list }}' ng-model='pc.selectedPlant.originalObject.list' name="pc.selectedPlant.originalObject.list" ></input>
+  </div>
+</div>
+
+<!-- Notes -->
+<div class="row">
+  <div class="form-group col-xs-12">
+    <label for='notesInput'>Notes</label>
+    <textarea type='text' class='form-control' id='notesInput' placeholder='notes' value='{{ pc.selectedPlant.originalObject.notes }}' ng-model='pc.selectedPlant.originalObject.notes' name="pc.selectedPlant.originalObject.notes" ></textarea>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="uploadButton col-xs-4">
+    <button type="button" class="btn btn-default" ng-click="pc.upload()">
+      upload photo<span class="caret"></span></button>
+          <!-- <div style="margin-top:10px;"> -->
+          <!-- Show the thumbnail only when the picture is uploaded -->
+              <!-- <a href="{{pc.selectedPlant.originalObject.picture.url}}" class="thumbnail"> -->
+                <!-- the picture is rendered with width: 500 and sharpened -->
+                <!-- <img ng-src="{{pc.selectedPlant.originalObject.picture | fpConvert: {filter:'sharpen'} }}"> -->
+              <!-- </a> -->
+          <!-- </div> -->
+  </div>
+</div>
+
 
   <div>
-    <!-- button to show form -->
-    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
-      Edit
-    </button>
-    <!-- buttons to submit / cancel form -->
-    <span >
-      <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+      <button type="submit" class="btn btn-primary" ng-click="pc.savePlantSpecs(pc.selectedPlant.originalObject.list)" >
         Save
       </button>
-      <button ng-show="editableForm.$visible" type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+      <button type="button" class="btn btn-default" >
         Cancel
       </button>
-    </span>
   </div>
+
 </form>
+</div>
 </div>

@@ -22,6 +22,7 @@ var plantSchema = new mongoose.Schema({
   flower_color: String,
   bloom_time: String,
   mn_native: String,
+  list: String,
   notes: String
 }); // end schema
 
@@ -62,7 +63,15 @@ router.put('/:id', function ( req, res ){
     {_id: id}, updatedPlantSpecs).then(function(){
       res.sendStatus(200);
     });
-});
+}); // end put
+
+router.delete('/:id', function ( req, res ){
+  var id = req.params.id;
+  plantModel.remove(
+    {_id: id}).then(function(){
+      res.sendStatus(200);
+    });
+}); // end put
 
 
 module.exports = router;

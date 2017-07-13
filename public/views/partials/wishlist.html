@@ -1,8 +1,9 @@
-<a href="#!/add-new-plant">add new plant</a>
-
-<div ng-init='pc.displayPlants()'>
-  <div ng-if='plant.grouping == 2' ng-repeat='plant in pc.plantsToBeDisplayed'>
-    <a href='#!/plant-specs'>{{ plant.common_name }}</a>
+<div class='list-group' ng-init='pc.displayPlants()'>
+  <div class='plantPicDisplay' ng-repeat="plant in pc.plantsToDisplay | orderBy: '-_id'" ng-if='plant.list.includes("wish list")'>
+    <a ng-href="#!/detail/{{plant._id}}">
+      <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:420, h:420} }}" />
+    </a>
+    <h5 class="plantTitleDisplay">{{plant.common_name | lowercase}}</h5>
+    <h3 class='plantViewDetails' ><a href="#!/detail/{{plant._id}}">details</a></h3>
   </div>
-  <!-- plants will display here  -->
 </div>

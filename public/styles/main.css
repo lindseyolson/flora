@@ -1,3 +1,72 @@
+img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+.uploadButton {
+  margin-top: .5em;
+  margin-bottom: 1em;
+}
+
+.plantPicDisplay {
+  margin-bottom: 2em;
+}
+
+.plantViewDetails {
+font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    display: inline-block;
+    /*float: right;*/
+    padding-right: 2em;
+}
+
+.plantTitleDisplay {
+  /*font: black;
+  margin-top: -2em;*/
+  padding-left: 2em;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 18px;
+  color: black;
+  display: inline-block;
+  /*float: left;*/
+
+  /*padding-right: -10em;
+  padding-top: 0.24em;
+  padding-bottom: 2em;
+  background: rgba(255,255,255, 0.6);*/
+  /*background: rgb(2); /* Fall-back for browsers that don't support rgba */
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+
+
+textarea {
+  width: 15em;
+  height: 15em;
+}
+
+#newPlantForm {
+  margin-top: 1.5em;
+}
+
 .logoheader {
   height: 3em;
   color: black;
@@ -60,21 +129,14 @@
   border-color: #a5a5a5;
 }
 
-
-
-
 .container-fluid {
   padding: 0em;
 }
 
-#EditableFormCtrl {
-  padding-top: 5em;
-}
-
 /*editable form*/
-.input {
+/*.input {
   width: 250px;
-}
+}*/
 
 div[ng-app] { margin: 10px; }
 form[name="editableForm"] > div {
@@ -86,6 +148,7 @@ form[name="editableForm"] .title {
   display: inline-block;
   font-weight: bold;
   padding-top: 5px;
+  /*margin-left: 2.5em;*/
   vertical-align: top;
   min-width: 90px;
 }
@@ -101,71 +164,10 @@ form[name="editableForm"] select {
   width: 250px;
 }
 
-/*typeahead dropdown*/
-.input {
-  padding-top: 8em;
+form[name="editableForm"] .input {
+  /*padding-left: 0.5em;*/
 }
 
-.angucomplete-dropdown {
-    border-color: #ececec;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 2px;
-    width: 250px;
-    padding: 6px;
-    cursor: pointer;
-    z-index: 9999;
-    position: absolute;
-    /*top: 32px;
-    left: 0px;
-    */
-    margin-top: -6px;
-    background-color: #ffffff;
-}
-
-.angucomplete-searching {
-    color: #acacac;
-    font-size: 14px;
-}
-
-.angucomplete-description {
-    font-size: 14px;
-}
-
-.angucomplete-row {
-    padding: 5px;
-    color: #000000;
-    margin-bottom: 4px;
-    clear: both;
-}
-
-.angucomplete-selected-row {
-    background-color: lightblue;
-    color: #ffffff;
-}
-
-.angucomplete-image-holder {
-    padding-top: 2px;
-    float: left;
-    margin-right: 10px;
-    margin-left: 5px;
-}
-
-.angucomplete-image {
-    height: 34px;
-    width: 34px;
-    border-radius: 50%;
-    border-color: #ececec;
-    border-style: solid;
-    border-width: 1px;
-}
-
-.angucomplete-image-default {
-    /* Add your own default image here
-     background-image: url('/assets/default.png');
-    */
-    background-position: center;
-    background-size: contain;
-    height: 34px;
-    width: 34px;
+form[name="editableForm"] button {
+  margin-left: 2em;
 }

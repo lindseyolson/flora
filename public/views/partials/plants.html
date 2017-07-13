@@ -1,32 +1,9 @@
-  <div class='list-group' ng-init='pc.displayPlants()'>
-  <div ng-repeat="plant in pc.plantsToDisplay">
-      <a ng-href="#!/detail/{{plant._id}}" class='list-group-item list-group-item-action flex-column align-items-start'>
-      <div class="d-flex w-100 justify-content-between">
-        <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
-        <h5 class="mb-1">{{plant.common_name}}</h5>
-        <!-- <h3 class='.md-button'>{{plant.common_name}}</h3> -->
-        <!-- <div class="text-right"><a ng-href="#!/detail/{{plant._id}}" class="btn btn-danger" role="button">View</a>
-        </div> -->
-      </div>
+<div class='list-group' ng-init='pc.displayPlants()'>
+  <div class='plantPicDisplay' ng-repeat="plant in pc.plantsToDisplay | orderBy: '-_id'" ng-if='plant.list.includes("garden list")'>
+      <a ng-href="#!/detail/{{plant._id}}" class='conatiner-fluid'>
+        <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:420, h:420} }}" />
       </a>
+      <h5 class="plantTitleDisplay">{{plant.common_name | lowercase}}</h5>
+      <h3 class='plantViewDetails' ><a href="#!/detail/{{plant._id}}">details</a></h3>
   </div>
 </div>
-
-
-<!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small>Donec id elit non mi porta.</small>
-  </a> -->
-
-<!-- <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
-<div class="caption text-center">
-  <h3 class='.md-button'>{{plant.common_name}}</h3>
-  <div class="text-right"><a ng-href="#!/detail/{{plant._id}}" class="btn btn-danger" role="button">View</a> </div>
-</div>
-
-</div>
-</div> -->
