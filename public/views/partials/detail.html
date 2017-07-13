@@ -1,5 +1,5 @@
 <div id="EditableFormCtrl" ng-init='pc.displayPlantDetails()' layout='row'>
-	<img ng-src="{{pc.plant.picture.url | fpConvert: {filter:'sharpen', w:500} }}" />
+	<img ng-src="{{pc.plant.picture.url | fpConvert: {filter:'sharpen', w:420, h:420} }}" />
 
 
   <form class='container' editable-form name="editableForm" onaftersave="pc.updatePlantSpecs()">

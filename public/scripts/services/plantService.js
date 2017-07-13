@@ -8,6 +8,13 @@ app.service ('PlantService', function( $http ){
     }); // end $http
   }; // end displayPlants
 
+  sv.displayPlantDetails = function( id ) {
+    return $http.get( '/plants/' + id ).then(function( data ){
+      console.log('back from db:', data);
+      return data.data;
+    }); // end $http
+  }; // end displayPlantDetails
+
   sv.savePlantSpecs = function( plantSpecs ) { // change this to *create* not *save*
     return $http.post( '/plants', plantSpecs ).then( function( response ){
       console.log('back from db:', response);
@@ -34,11 +41,6 @@ app.service ('PlantService', function( $http ){
     }); // end $http
   }; // end savePlantSpecs
 
-  sv.displayPlantDetails = function( id ) {
-    return $http.get( '/plants/' + id ).then(function( data ){
-      console.log('back from db:', data.data);
-      return data.data;
-    }); // end $http
-  }; // end displayPlantDetails
+
 
 }); // end PlantService

@@ -1,23 +1,17 @@
 app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams, $location ) {
   var vm = this;
   vm.plantData = plantData;
-  vm.plantsToDisplay = [];
-  vm.plant = {};
-  vm.user = {
-    group: 1
-  };
-
 
   vm.upload = function(){
     filepickerService.pick(
-        {
-            mimetype: 'image/*',
-            language: 'en',
-            services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
-            openTo: 'COMPUTER',
-            cropDim: [500, 500],
-            imageQuality: 80
-        },
+      {
+        mimetype: 'image/*',
+        language: 'en',
+        services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
+        openTo: 'COMPUTER',
+        cropDim: [500, 500],
+        imageQuality: 80
+      },
         function(Blob){
             console.log(JSON.stringify(Blob));
             vm.selectedPlant.originalObject.picture = Blob;
@@ -29,12 +23,12 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
   vm.reupload = function(){
     filepickerService.pick(
         {
-            mimetype: 'image/*',
-            language: 'en',
-            services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
-            openTo: 'COMPUTER',
-            cropDim: [500, 500],
-            imageQuality: 80
+          mimetype: 'image/*',
+          language: 'en',
+          services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
+          openTo: 'COMPUTER',
+          cropDim: [500, 500],
+          imageQuality: 80
         },
         function(Blob){
             console.log(JSON.stringify(Blob));
@@ -95,8 +89,6 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
     };
     PlantService.updatePlantSpecs( id, updatedPlantSpecs ); // end PlantService
   }; // end updatePlantSpecs
-
-
 
   vm.deletePlant = function(list) {
     console.log(list);

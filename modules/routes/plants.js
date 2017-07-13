@@ -32,17 +32,28 @@ var plantModel = mongoose.model('plantModel', plantSchema);
 // GET //
 router.get('/', function( req, res ){
   console.log('/plants GET route hit');
-  plantModel.find().then( function( data ){
-    console.log( data );
-    res.send( data );
+  plantModel.find().then( function( err, messages ){
+    if( err ) {
+      console.log('get route ERROR:', err);
+      res.sendStatus(500);
+    }
+    else {
+      res.send( data );
+    }
   }); // end find()
 }); // end get
 
 router.get('/:id', function( req, res ){
   console.log('/plants GET by id route hit');
   var id = req.params.id;
-  plantModel.findOne({_id: id}).then(function( data ){
-    res.send( data );
+  plantModel.findOne({_id: id}).then(function( err, data ){
+    if( err ) {
+      console.log('get route ERROR:', err);
+      res.sendStatus(500);
+    }
+    else {
+      res.send( data );
+    }
   }); // end findbyId
 }); // end get
 
@@ -50,8 +61,16 @@ router.get('/:id', function( req, res ){
 router.post('/', function( req,res ){
   console.log('/plants POST route hit:', req.body);
   var newRecord = plantModel(req.body);
-  newRecord.save();
-  res.sendStatus(201);
+
+  newRecord.save(function( err, post ){
+    if( err ) {
+      console.log('post route ERROR:', err);
+      res.sendStatus(500);
+    }
+    else {
+      res.sendStatus(201);
+    }
+  });
 }); // end post
 
 
@@ -60,16 +79,28 @@ router.put('/:id', function ( req, res ){
   var id = req.params.id;
   var updatedPlantSpecs = req.body;
   plantModel.update(
-    {_id: id}, updatedPlantSpecs).then(function(){
-      res.sendStatus(200);
+    {_id: id}, updatedPlantSpecs).then(function( err, put ){
+      if( err ) {
+        console.log('put route ERROR:', err);
+        res.sendStatus(500);
+      }
+      else {
+        res.sendStatus(200);
+      }
     });
 }); // end put
 
 router.delete('/:id', function ( req, res ){
   var id = req.params.id;
   plantModel.remove(
-    {_id: id}).then(function(){
-      res.sendStatus(200);
+    {_id: id}).then(function( err ){
+      if ( err ) {
+        console.log('delete route ERROR:', err);
+        res.sendStatus(500);
+      }
+      else {
+        res.sendStatus(200);
+      }
     });
 }); // end put
 
