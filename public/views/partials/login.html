@@ -1,0 +1,15 @@
+<form ng-submit='uc.loginUser()'>
+  <div>
+      <label for='username'></label>
+      <input type='text' ng-model='uc.user.username' placeholder='username' id='username'>
+  </div>
+  <div>
+      <label for='password'></label>
+      <input type='password' ng-model='uc.user.password' placeholder='password' id='password'>
+  </div>
+  <div>
+      <input class="btn btn-default" type="submit" name="submit" value="Log In" />
+      <a href='/register'>Register</a>
+  </div>
+</form>
+<p>{{uc.message}}</p>

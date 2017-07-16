@@ -1,0 +1,17 @@
+<div class="row" ng-controller='PlantController as pc'>
+  <div class="col-md-12 logoheader" ng-controller='UserController as uc'>
+    <h3 id='logo'>flora</h3>
+    <button type="button" class="btn btn-secondary btn-sm" ng-click='uc.logoutUser()'>log out</button>
+  </div>
+</div>
+<div class="btn-group-justified" data-toggle="buttons">
+  <label class="btn-group">
+  <a class="btn btn-primary" href="add-new-plant" role="button" ng-click='editableForm.$show()'>add new plant</a>
+  </label>
+  <label class="btn-group">
+  <a class="btn btn-primary" href="plants" role="button">my garden</a>
+  </label>
+  <label class="btn-group">
+  <a class="btn btn-primary" href="#!/wishlist" role="button">wish list</a>
+  </label>
+</div>

@@ -6,11 +6,12 @@ var user = require ('../models/user');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function( req, res ) {
-  console.log('/garden route hit');
+  console.log('/user route hit');
   //check if logged in
   if( req.isAuthenticated() ) {
     //send back user object from database
     console.log('logged in');
+    console.log(req.user);
     res.send(req.user);
   }
   else {

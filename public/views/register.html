@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>myGarden App</title>
-    <!-- styles -->
-    <link type='text/css' rel="stylesheet" href="vendors/bootstrap.min.css">
-    <link type='text/css' rel="stylesheet" href="vendors/xeditable.min.css">
-    <link type='text/css' rel="stylesheet" href="vendors/select.min.css">
-    <link type='text/css' rel="stylesheet" href="styles/main.css">
-    <!-- vendors -->
-    <script type='text/javascript' src="vendors/angular.min.js" charset="utf-8"></script>
-    <script type='text/javascript' src="vendors/angular-route.min.js" charset="utf-8"></script>
-    <script type='text/javascript' src="vendors/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
-    <script type='text/javascript' src="vendors/xeditable.min.js" charset="utf-8"></script>
-    <script type='text/javascript' src="vendors/angucomplete-alt.min.js" charset="utf-8"></script>
-    <script type='text/javascript' src="vendors/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
-    <!-- scripts -->
-    <script type='text/javascript' src="scripts/app.js" charset="utf-8"></script>
-    <script type='text/javascript' src="scripts/plant-data.js" charset="utf-8"></script>
-    <!-- controllers -->
-    <script type='text/javascript' src="scripts/userController.js" charset="utf-8"></script>
-    <script type='text/javascript' src="scripts/plantController.js" charset="utf-8"></script>
-    <!-- services -->
-    <script type='text/javascript' src='scripts/services/userService.js' charset="utf-8"></script>
-    <script type='text/javascript' src='scripts/services/plantService.js' charset="utf-8"></script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-  </head>
+  <title>garden app</title>
+  <!-- styles -->
+  <link type='text/css' rel="stylesheet" href="vendors/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <link type='text/css' rel="stylesheet" href="vendors/xeditable.min.css">
+  <link type='text/css' rel="stylesheet" href="vendors/angular-material.min.css">
+  <link type='text/css' rel="stylesheet" href="vendors/angucomplete-alt.css">
+  <link type='text/css' rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+ <!-- vendors -->
+  <script type='text/javascript' src="vendors/angular.min.js" charset="utf-8"></script>
+  <script type='text/javascript' src="vendors/angular-route.min.js" charset="utf-8"></script>
+  <script type='text/javascript' src="vendors/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
+  <script type='text/javascript' src="vendors/xeditable.min.js" charset="utf-8"></script>
+  <script type='text/javascript' src="vendors/angucomplete-alt.min.js" charset="utf-8"></script>
+  <script type='text/javascript' src="vendors/angular-material.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+  <!-- <script src="https://static.filestackapi.com/v3/filestack-0.7.0.js"></script> -->
+  <script type='text/javascript' src="vendors/angular_filepicker.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+
+  <!-- scripts -->
+  <script type='text/javascript' src="scripts/app.js" charset="utf-8"></script>
+  <script type='text/javascript' src="scripts/plant-data.js" charset="utf-8"></script>
+  <!-- controllers -->
+  <script type='text/javascript' src="scripts/userController.js" charset="utf-8"></script>
+  <script type='text/javascript' src="scripts/plantController.js" charset="utf-8"></script>
+  <!-- services -->
+  <script type='text/javascript' src='scripts/services/userService.js' charset="utf-8"></script>
+  <script type='text/javascript' src='scripts/services/plantService.js' charset="utf-8"></script>
+</head>
   <body ng-app='app'>
     <h1>myGarden</h1>
     <div ng-controller='UserController as uc'>
@@ -33,11 +45,11 @@
     <form action='/register' method='post'>
         <div>
             <label for='username'></label>
-            <input type='text' ng-model='uc.registerUsername' placeholder='username' id='username'>
+            <input type='text' ng-model='uc.user.username' placeholder='username' id='username'>
         </div>
         <div>
             <label for='password'></label>
-            <input type='password' ng-model='uc.registerPassword' placeholder='password' id='password'>
+            <input type='password' ng-model='uc.user.password' placeholder='password' id='password'>
         </div>
         <div>
             <button type="button" ng-click='uc.registerUser()'>Register</button>

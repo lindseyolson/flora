@@ -1,4 +1,6 @@
+<header ng-include="'/views/partials/header.html'"></header>
 <div class='list-group' ng-init='pc.displayPlants()'>
+  <p>Hi {{ pc.username }}</p>
   <div class='plantPicDisplay' ng-repeat="plant in pc.plantsToDisplay | orderBy: '-_id'" ng-if='plant.list.includes("garden list")'>
       <a ng-href="#!/detail/{{plant._id}}" class='conatiner-fluid'>
         <img ng-src="{{plant.picture.url | fpConvert: {filter:'sharpen', w:420, h:420} }}" />

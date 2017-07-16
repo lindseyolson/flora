@@ -1,6 +1,18 @@
-app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams, $location ) {
+app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams, $location, $http ) {
   var vm = this;
   vm.plantData = plantData;
+
+  // $http.get('/user').then(function(response) {
+  //   // user email is required to be unique so this is what is checked
+  //   if(response.data.username) {
+  //     // user has current session on server
+  //     vm.username = response.data.username;
+  //     console.log(vm.username);
+  //   } else {
+  //     // user has no session, bounce them back to the login page
+  //     $location.path('/');
+  //   }
+  // });
 
   vm.upload = function(){
     filepickerService.pick(
@@ -40,9 +52,14 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
 
   vm.displayPlants = function() {
     console.log('in displayPlants');
-      PlantService.displayPlants().then( function( data ) {
-        vm.plantsToDisplay = data;
-        console.log(data);
+
+    $http.get( '/plants' ).then( function( data ){
+      console.log('back from db:', data.data);
+      vm.plantsToDisplay = data.data;
+
+      // PlantService.displayPlants().then( function( data ) {
+      //   vm.plantsToDisplay = data;
+      //   console.log(data);
       }); // end PlantService
   }; // end displayPlants
 
@@ -50,7 +67,7 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
     // vm.selectedPlant.originalObject.grouping = vm.grouping;
     var plantSpecs = vm.selectedPlant.originalObject;
     // plantSpecs.grouping = vm.grouping;
-    console.log(plantSpecs);
+    // console.log(plantSpecs);
     PlantService.savePlantSpecs( plantSpecs ).then(function() {
       if (list === 'garden list') {
         $location.url('/plants');
