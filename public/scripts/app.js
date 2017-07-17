@@ -4,10 +4,12 @@ app.run(function(editableOptions) {
   editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
 });
 
+
 app.config( function( $routeProvider, filepickerProvider ) {
-  $routeProvider.when ('/', {
-    templateUrl: 'views/partials/plants.html',
-    controller: 'PlantController as pc'
+  $routeProvider
+    .when ('/', {
+    templateUrl: 'views/partials/login.html',
+    controller: 'UserController as uc'
   }).when ('/wishlist', {
     templateUrl: 'views/partials/wishlist.html',
     controller: 'PlantController as pc'
@@ -23,18 +25,9 @@ app.config( function( $routeProvider, filepickerProvider ) {
   }).when ('/detail/:id', {
     templateUrl: 'views/partials/detail.html',
     controller: 'PlantController as pc'
+  }).when ('/failure', {
+    templateUrl: 'views/partials/failure.html',
+    controller: 'UserController as uc'
   });
   filepickerProvider.setKey('ASsVBhFqLQGGBwDxVquEqz');
 }); // end app.config
-
-// client.retrieve('eEHjciGBSAyaLAi868Ms');
-// var client = filestack.init('ASsVBhFqLQGGBwDxVquEqz');
-//
-// function showPicker() {
-//     client.pick({
-//       accept: 'image/*',
-//       maxFiles: 1
-//     }).then(function(result) {
-//         console.log(JSON.stringify(result.filesUploaded))
-//     });
-// }; // end client filestack

@@ -1,6 +1,8 @@
-app.controller( 'PlantController', function( PlantService, filepickerService, $routeParams, $location ) {
+app.controller( 'PlantController', function( PlantService, UserService, filepickerService, $routeParams, $location ) {
   var vm = this;
   vm.plantData = plantData;
+  // vm.user = UserService.username;
+
 
   vm.upload = function(){
     filepickerService.pick(
@@ -39,8 +41,9 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
   };
 
   vm.displayPlants = function() {
-    console.log('in displayPlants');
-      PlantService.displayPlants().then( function( data ) {
+    console.log('in displayPlants function:', UserService.username);
+    let username = UserService.username;
+      PlantService.displayPlants( username ).then( function( data ) {
         vm.plantsToDisplay = data;
         console.log(data);
       }); // end PlantService
@@ -48,6 +51,8 @@ app.controller( 'PlantController', function( PlantService, filepickerService, $r
 
   vm.savePlantSpecs = function(list) {
     // vm.selectedPlant.originalObject.grouping = vm.grouping;
+    vm.selectedPlant.originalObject.username = UserService.username;
+    console.log(vm.selectedPlant.originalObject);
     var plantSpecs = vm.selectedPlant.originalObject;
     // plantSpecs.grouping = vm.grouping;
     console.log(plantSpecs);

@@ -3,7 +3,6 @@ img:hover {
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
 /* enable absolute positioning */
 .inner-addon {
@@ -67,10 +66,63 @@ textarea {
   margin-top: 1.5em;
 }
 
+#logoLogin {
+  margin-top: 3em;
+  color: white;
+  position: absolute;
+  text-align: center;
+  padding-left: 1.6em;
+  font-family: 'Zilla Slab', serif;
+  font-size: 70px;
+}
+
+#loginText {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.align-center {
+  text-align: center;
+  /*color: white;*/
+}
+
+.loginHeading {
+  margin-bottom: -0.5em;
+  font-size: 22px;
+}
+
+#loginButton {
+  margin-top: 2em;
+}
+
+#passwordLogin {
+  margin-top: -0.5em;
+}
+
+#regLink {
+  color: white;
+  /*display: inline-block;*/
+  /*text-align: center;*/
+}
+
 .logoheader {
   height: 3em;
   color: black;
   background-color: #49AB7A;
+}
+
+.loginPage {
+  background-color: #49AB7A;
+  height: 100%;
+  width: 100%;
+}
+
+.loginForm {
+  margin-top: 34em;
+}
+
+.loginButtons {
+  background-color: #d6d6d6;
 }
 
 #logo{
@@ -104,8 +156,11 @@ textarea {
 
 }
 
-.btn-primary:hover,
-.btn-primary.active:hover {
+.btn-primary:active {
+  background-color: #7a7a7a;
+}
+.btn-primary:focus,
+.btn-primary.focus{
   background-color: #7a7a7a;
   border-color: #a5a5a5;
 }
@@ -123,9 +178,8 @@ textarea {
 }
 
 .btn-primary:focus,
-.btn-primary.focus,
-.btn-primary .badge {
-  background-color: #a5a5a5;
+.btn-primary.focus{
+  background-color: #7a7a7a;
   border-color: #a5a5a5;
 }
 

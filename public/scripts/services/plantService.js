@@ -1,8 +1,8 @@
 app.service ('PlantService', function( $http ){
   var sv = this;
 
-  sv.displayPlants = function () {
-    return $http.get( '/plants' ).then( function( data ){
+  sv.displayPlants = function ( username ) {
+    return $http.get( '/plants/' + username ).then( function( data ){
       console.log('back from db:', data.data);
       return data.data;
     }); // end $http

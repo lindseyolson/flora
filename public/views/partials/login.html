@@ -1,0 +1,49 @@
+<div class="loginPage">
+  <div ng-show='uc.login' class="col-md-12">
+    <h3 id='logoLogin'>flora</h3>
+  <div class="container">
+    <form class='loginForm'>
+
+      <div>
+        <label for='username'></label>
+        <input type='text' class='form-control' ng-model='uc.username' placeholder='username' id='username'>
+      </div>
+      <div id='passwordLogin'>
+        <label for='password'></label>
+        <input type='password' class='form-control' ng-model='uc.password' placeholder='password' id='password'>
+      </div>
+      <p class='align-center' ng-if='uc.message'>{{uc.message}}</p>
+      <div id='loginButton'>
+        <button type="button" class='form-control loginButtons' ng-click='uc.loginUser()'>Log In</button>
+      </div>
+      <p id='loginText'>No account? <a ng-click='uc.showLoginOrRegister()' id='regLink'>Register</a></p>
+    </form>
+  </div>
+  </div>
+
+  <div ng-hide='uc.login' class="col-md-12">
+    <h3 id='logoLogin'>flora</h3>
+  <div class="container">
+    <form class='loginForm'>
+      <h3 class='loginHeading'>Create account</h3>
+
+      <div>
+        <label for='username'></label>
+        <input type='text' class='form-control' ng-model='uc.registerUsername' placeholder='choose a username' id='username'>
+      </div>
+      <div id='passwordLogin'>
+        <label for='password'></label>
+        <input type='password' class='form-control' ng-model='uc.registerPassword' placeholder='pick a password' id='password'>
+      </div>
+      <p class='align-center' ng-if='uc.message'>{{uc.message}}</p>
+      <div id='loginButton'>
+        <button type="button" class='form-control loginButtons' ng-click='uc.registerUser()'>Register now</button>
+      </div>
+      <p id='loginText'>Already registered? <a ng-click='uc.showLoginOrRegister()' id='regLink'>Log in</a></p>
+    </form>
+  </div>
+  </div>
+
+
+
+</div>

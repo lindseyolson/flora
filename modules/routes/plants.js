@@ -13,6 +13,7 @@ mongoose.connect('localhost:27017/gardenApp');
 
 // schema
 var plantSchema = new mongoose.Schema({
+  username: String,
   picture: Schema.Types.Mixed,
   common_name: String,
   life_form: String,
@@ -30,18 +31,15 @@ var plantSchema = new mongoose.Schema({
 var plantModel = mongoose.model('plantModel', plantSchema);
 
 // GET //
-router.get('/', function( req, res ){
+router.get('/:id', function( req, res ){
   console.log('/plants GET route hit');
-  plantModel.find().then( function( err, messages ){
-    if( err ) {
-      console.log('get route ERROR:', err);
-      res.sendStatus(500);
-    }
-    else {
+  var username = req.params.id;
+  console.log(username);
+  plantModel.find({username: username}).then( function( data ){
       res.send( data );
-    }
-  }); // end find()
+    });
 }); // end get
+
 
 router.get('/:id', function( req, res ){
   console.log('/plants GET by id route hit');

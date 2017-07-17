@@ -1,3 +1,5 @@
+<div ng-include src="'views/partials/header.html'"></div>
+
 <div id="EditableFormCtrl" ng-init='pc.displayPlantDetails()' layout='row'>
 	<img ng-src="{{pc.plant.picture.url | fpConvert: {filter:'sharpen', w:420, h:420} }}" />
 
