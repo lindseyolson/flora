@@ -1,6 +1,6 @@
 ## flora
 
-* mobile web app
+- mobile web app
 An app to ensure all the perennials in a garden are getting proper exposure and care, along with properly documented.
 
 Users of the app are allowed to:
