@@ -1,6 +1,6 @@
 ## flora
 
-Each year, I spent time searching the web trying to find perennial plant species I owned to ensure their proper exposure and care. The issue was that I could never guarantee I had found the exact species.
+An app to ensure all the perennials in a garden are getting proper exposure and care, along with properly documented.
 
 Users of the app are allowed to:
 - register
