@@ -1,9 +1,6 @@
 var mongoose = require ('mongoose');
 var Schema = mongoose.Schema;
 
-
-mongoose.connect ('localhost:27017/gardenApp');
-
 // schema
 var plantSchema = new mongoose.Schema({
   username: String,

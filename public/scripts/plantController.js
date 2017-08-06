@@ -27,10 +27,9 @@ app.controller( 'PlantController', function( PlantService, UserService, filepick
         {
           mimetype: 'image/*',
           language: 'en',
-          services: ['COMPUTER','DROPBOX','IMAGE_SEARCH','CONVERT'],
-          openTo: 'COMPUTER',
-          cropDim: [500, 500],
-          imageQuality: 80
+          services: ['IMAGE_SEARCH','COMPUTER','DROPBOX','CONVERT'],
+          openTo: 'IMAGE_SEARCH',
+          cropDim: [500, 500]
         },
         function(Blob){
             console.log(JSON.stringify(Blob));

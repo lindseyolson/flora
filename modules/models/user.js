@@ -1,7 +1,5 @@
 var mongoose = require ('mongoose');
 
-mongoose.connect ('localhost:27017/gardenApp');
-
 var userSchema = new mongoose.Schema({
   username: String,
   password: String
