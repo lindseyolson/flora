@@ -1,4 +1,4 @@
-<div ng-include src="'views/partials/header.html'"></div>
+<!-- <div ng-include src="'views/partials/header.html'"></div> -->
 <div class='list-group' ng-init='pc.displayPlants()'>
   <div class='plantPicDisplay' ng-repeat="plant in pc.plantsToDisplay | orderBy: '-_id'" ng-if='plant.list.includes("garden list")'>
       <a ng-href="#!/detail/{{plant._id}}" class='conatiner-fluid'>
