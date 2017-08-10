@@ -1,5 +1,5 @@
 <div class="loginPage">
-  <div ng-show='uc.login' class="col-md-12">
+  <div ng-show='uc.UserService.login' class="col-md-12">
     <h3 id='logoLogin'>flora</h3>
   <div class="container">
     <form class='loginForm'>
@@ -21,7 +21,7 @@
   </div>
   </div>
 
-  <div ng-hide='uc.login' class="col-md-12">
+  <div ng-hide='uc.UserService.login' class="col-md-12">
     <h3 id='logoLogin'>flora</h3>
   <div class="container">
     <form class='loginForm'>
@@ -35,7 +35,7 @@
         <label for='password'></label>
         <input type='password' class='form-control' ng-model='uc.registerPassword' placeholder='pick a password' id='password'>
       </div>
-      <p class='align-center' ng-if='uc.message'>{{uc.message}}</p>
+      <p class='align-center' ng-if='uc.UserService.message'>{{uc.message}}</p>
       <div id='loginButton'>
         <button type="button" class='form-control loginButtons' ng-click='uc.registerUser()'>Register now</button>
       </div>

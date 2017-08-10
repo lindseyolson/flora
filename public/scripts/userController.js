@@ -1,26 +1,18 @@
 app.controller( 'UserController', function ( UserService, $window, $location ){
   var vm = this;
+  console.log('in user controller');
   vm.username='';
   vm.password='';
   vm.registerUsername='';
   vm.registerPassword='';
   vm.login= true;
   vm.user = {};
-  vm.showNav = false;
+  vm.UserService = UserService;
 
-  // vm.load = function() {
-  //   $(".navBar a").on("click", function(){
-  //      $(".navBar").find(".active").removeClass("active");
-  //      $(this).parent().addClass("active");
-  //   });
-  // };
 
-  // vm.load();
-
-  vm.showLoginOrRegister = function() {
-    vm.login = !vm.login;
-    vm.message = '';
-  }
+  vm.showLoginOrRegister = function(){
+    UserService.showLoginOrRegister();
+  };
 
   vm.registerUser = function(){
     console.log('in controller: registerUser()');
@@ -40,8 +32,9 @@ app.controller( 'UserController', function ( UserService, $window, $location ){
     }
   }; // end register
 
+
+  // login user
   vm.loginUser = function() {
-    // console.log('in controller: loginUser()');
     if (vm.username === '' || vm.password === '') {
       console.log('blank');
       vm.message = 'You must enter a name and password.';
@@ -51,26 +44,13 @@ app.controller( 'UserController', function ( UserService, $window, $location ){
         username: vm.username,
         password: vm.password
       };
-      UserService.loginUser( credentials ).then( function( response ) {
-        console.log('from controller:', response);
-        if( response.data === 'match found') {
-          vm.user.username = response.config.data.username;
-          console.log(vm.user.username);
-          vm.showNav = true;
-          $location.path('/plants');
-          // vm.load();
-        } // end match found
-        else {
-          console.log('invalid credentials');
-          vm.message = 'Invalid username or password, please try again.';
-        } // end error
-      }); // end UserService
+      UserService.loginUser( credentials );
     }
   }; // end loginUser
 
   vm.logoutUser = function() {
-    console.log('in controller: logoutUser()');
-    $window.location.href = '/';
-    vm.showNav = false;
+    UserService.logoutUser();
+    // console.log('in controller: logoutUser()');
+    // $window.location.href = '/';
   }; // end logoutUser
 }); // end UserController

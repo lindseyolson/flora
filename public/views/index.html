@@ -25,7 +25,6 @@
   <script type='text/javascript' src="vendors/angular-material.min.js" charset="utf-8"></script>
   <script type='text/javascript' src="vendors/jquery.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-  <!-- <script src="https://static.filestackapi.com/v3/filestack-0.7.0.js"></script> -->
   <script type='text/javascript' src="vendors/angular_filepicker.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
 
@@ -42,7 +41,28 @@
 
 
 <body ng-app='app' class='container-fluid'>
-  <!-- <div ng-include src="'views/partials/header.html'" ng-if=''></div> -->
+
+
+    <div ng-controller='UserController as uc' ng-show='uc.UserService.showNav'  >
+      <div class="row">
+        <div class="col-md-12 logoheader">
+          <h3 id='logo'>flora</h3>
+          <button type="button" class="btn btn-secondary btn-sm" ng-click='uc.logoutUser()'>log out</button>
+        </div>
+      </div>
+      <div class="navBar btn-group-justified" data-toggle="buttons">
+        <label class="btn-group">
+        <a class="btn btn-primary" href="#!/add-new-plant" role="button">add new plant</a>
+        </label>
+        <label class="btn-group">
+        <a class="btn btn-primary" href="#!/plants" role="button">my garden</a>
+        </label>
+        <label class="btn-group">
+        <a class="btn btn-primary" href="#!/wishlist" role="button">wish list</a>
+        </label>
+      </div>
+    </div>
+
 
   <ng-view></ng-view>
 
