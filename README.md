@@ -11,6 +11,7 @@ Users of the app are allowed to:
 - login
 - search and add plant species to their account
 - upon selection of a plant, the exposure and care autopopulates in the details. A notes section is available per plant added, leaving room for jotting notes throughout the season.
+- upload photos of plants
 
 Technologies used: MEAN Stack (MongoDB, Express.js, AngularJS, Node.js), JavaScript, bcrypt, Bootstrap, HTML, CSS, Angular-Xeditable, Angucomplete Alt, Filestack and Heroku.
 
