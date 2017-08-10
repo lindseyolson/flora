@@ -1,9 +1,9 @@
 ## [flora](https://flora-garden-app.herokuapp.com/)
 
-- web app designed for mobile
-- to login and check it out, use these credentials:
-   `Username: Lindsey  
-   Password: 123`  
+- Web app designed for mobile.
+- Use these credentials to login & check it out:
+   `Username: Lindsey`  
+   `Password: 123`   
    
  #### An app to ensure all the perennials in a garden are getting proper exposure and care, along with properly documented.
 
