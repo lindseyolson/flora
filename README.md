@@ -2,7 +2,7 @@
 
 - Web app designed for mobile.
 - Use these credentials to login & check it out:
-   `Username: Lindsey`   `Password: 123`   
+   `Username: Lindsey`   `Password: 123` .
    
  #### An app to ensure all the perennials in a garden are getting proper exposure and care, along with properly documented.
 
