@@ -1,8 +1,8 @@
 ## [flora](https://flora-garden-app.herokuapp.com/)
 
 - web app designed for mobile
-```Username: Lindsey
-   Password: 123```
+`Username: Lindsey
+   Password: 123`
    
  #### An app to ensure all the perennials in a garden are getting proper exposure and care, along with properly documented.
 
