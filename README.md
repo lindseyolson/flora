@@ -6,6 +6,7 @@
    
  #### An app to ensure perennials in your garden are getting proper exposure and care, and provides the opportunity for these plants to be well documented.
 
+Full stack app created in 2 weeks.
 Users of the app are allowed to:
 - register
 - login
